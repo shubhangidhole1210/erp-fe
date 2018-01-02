@@ -1,0 +1,78 @@
+<div ng-controller="userTypeCtrl">
+	<div class="erp-information">
+		<div>
+			<div>
+				<md-button  class="md-raised md-primary add-new-btn" 
+							ng-click="addNewUserType($event);"
+							ng-init="populateUserTypeList();flag=0">Add New User Type</md-button>
+			</div>
+			<md-input-container class="md-block" 
+								flex-gt-sm type="password" 
+								style="margin-left:2%">
+				<input 	type="text" 
+						ng-model="searchText" 
+						name="password" 
+						placeholder="Search by User Type Name" 
+						class="search-text"> 
+			</md-input-container>
+		</div>
+					
+			<h1 class="table-header">User Type List</h1>
+			<table id="tableHead"  fixed-header class="scroll-rm-list" >
+			<thead>
+			<tr>
+				<th>No</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th style="margin-left: 50%">Action</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="userType in UserTypes |  filter:{usertypeName: searchText } | startFrom:currentPage*pageSize | limitTo:pageSize">
+				<td>{{(currentPage*pageSize) + ($index+1) }}</td>
+				<td>{{userType.usertypeName}}</td>
+				<td>{{userType.description}}</td>
+				<td>
+					<div class="lock-size" layout="row" layout-align="center center" style="margin-left: -35px">
+					<md-fab-speed-dial md-open="isOpen" md-direction="{{selectedDirection}}" ng-class="selectedMode" >
+        				<md-fab-trigger>
+					          <md-button class="md-fab" style="background-color: #106CC8;">
+					            <i class="material-icons">more_vert</i>
+					          </md-button>
+        				</md-fab-trigger>
+
+				        <md-fab-actions>
+				          <md-button class="md-fab md-raised md-mini actionButton" ng-click="viewUserTypeInformation($event,$index)" >
+				            <i class="material-icons">launch</i>
+				                <md-tooltip>View</md-tooltip>
+				          </md-button>
+				          <md-button class="md-fab md-raised md-mini actionButton"  ng-click="editUserTypeInformation($event,$index)" 
+								ng-init="flag=1"  >
+				            <i class="material-icons">mode_edit</i>
+				                <md-tooltip>Edit</md-tooltip>
+				          </md-button>
+				          <md-button class="md-fab md-raised md-mini actionButton"   ng-click="showConfirm($event,$index)">
+				            <i class="material-icons">delete</i>
+				                <md-tooltip >Delete</md-tooltip>
+				          </md-button>
+				        </md-fab-actions>
+      				</md-fab-speed-dial>	
+				</div>
+				
+				</td>
+			</tr>
+			</tbody>
+		</table>
+		<md-dialog-actions layout="row" style="margin-top:60%" class="paginationBtn" ng-show="isPaginationPageHide"> 
+		  	<md-button  class="md-raised"
+		  				type="button" 
+		  				ng-disabled="currentPage == 0" 
+		  				ng-click="currentPage=currentPage-1">Previous Page</md-button> 
+		  	<md-button 	class="md-raised" 
+		  				ng-disabled="currentPage >= UserTypes.length/pageSize - 1" 
+		  				ng-click="currentPage=currentPage+1">Next Page</md-button>
+		</md-dialog-actions>
+		<div class="total-pages">Total no of pages {{currentPage+1}} / {{totalNoOfPages()}}</div>
+	<div ng-show="isUnitInPresent">Currently there are no active Units.Please add new unit.</div>
+	</div>
+</div>

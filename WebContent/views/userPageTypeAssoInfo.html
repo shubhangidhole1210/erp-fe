@@ -1,0 +1,76 @@
+<md-dialog ng-init="getUserTypeId()">
+  <form name="userTypePageInformtion"  novalidate>
+  
+    <md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>{{information}}</h2>
+		<span flex></span>
+		<md-button class="cancel" ng-click="cancel()"> <md-icon
+			>&#10006;</md-icon>
+		</md-button>
+	</div>
+	</md-toolbar>
+
+    <md-dialog-content >
+      <div class="md-dialog-content" >
+         <div layout-gt-sm="row">
+           <md-input-container>
+          <label>USER TYPE*</label>
+          <md-select ng-model="userTypePageAsso.usertypeId.id" name="userType"  ng-disabled="isReadOnly" ng-required="true" required ng-init="getUserTypeList()">
+            <md-option ng-repeat="usertypeId in userTypes" ng-value="usertypeId.id" >
+               {{usertypeId.usertypeName}}
+            </md-option>
+          </md-select>
+          <div ng-messages="userTypePageInformtion.userType.$error" >
+                 <div ng-message="required">Please Select User Type</div>
+              </div>
+        </md-input-container>
+        </div>
+          <table>
+             <tr>
+                <th>PAGE NAME</th>
+                <th>ACTION</th>
+             </tr>
+             <tr ng-repeat="userPage in userPages" >
+                <td>{{userPage.pageId.pageName}}</td>
+                <td>	
+                   <button type="button" ng-click="deletePage($index)">DELETE</button>
+                </td>
+             </tr>
+              <tr ng-repeat="userPageId in userPageAssociation" >
+                <td>{{userPageId.page.pageName}}</td>
+                <td style="margin-top: 7px">
+                   <button type="button" ng-click="deletePage($index)">DELETE</button>
+                </td>
+             </tr>
+          </table>
+          <div layout-gt-sm="row">
+             <md-input-container style="width:60%">
+          <label>PAGE*</label>
+          <md-select ng-model="userPage.pageId" name="page"  ng-disabled="isReadOnly"  ng-init="getPageList()" ng-change="onPageChange()">
+            <md-option ng-repeat="page in pages" ng-value="page" >
+               {{page.pageName}}
+            </md-option>
+          </md-select>
+          <div ng-show="userTypePageInformtion.page.$error.message" class="error-msg">{{message}}</div>
+        </md-input-container>
+        <button type="button" class="added-multiple"
+				ng-click="addPages()">Add Pages</button>
+          </div>
+         </div>
+  
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button class="md-raised" ng-click="submitUserTypePageInformation(userTypePageAsso.usertypeId.id,userPage.pageId)" type="submit" ng-disabled="isSaveButtonDisable" ng-show="isSaveButtonHide">SAVE</md-button>
+      <md-button class="md-raised" ng-click="answer('not useful')" >CANCEL</md-button>
+    </md-dialog-actions>
+    
+  </form>
+</md-dialog>
+
+
+
+
+
+

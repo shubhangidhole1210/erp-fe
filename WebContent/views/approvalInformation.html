@@ -1,0 +1,32 @@
+<div ng-controller="approvalController">
+	<div class="erp-information" ng-init="populateApprovalList()">
+		
+		
+			<div class="scroll-rm-list">
+		   <h1 class="table-header">APPROVAL</h1>
+		<table id="tableHead">
+			<tr>
+				<th>No</th>
+				<th>Description</th>
+				<th>Type</th>
+				<th>Expected date</th>
+				<th>Action</th>
+			</tr>
+			<tr ng-repeat="approval in approvalData">
+				<td>{{$index+1}}</td>
+				<td>{{approval.description}}</td>
+				<td>{{approval.type}}</td>
+				<td>{{approval.expecteDate}}</td>
+				<td>
+				    
+				      <md-button class="md-raised md-primary">Approval</md-button>
+				       <md-button class="md-raised md-primary" type="button">Reject</md-button>
+				</td>
+
+			</tr>
+		</table>
+		
+	</div>
+		
+	</div>
+</div>

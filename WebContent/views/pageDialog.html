@@ -1,0 +1,92 @@
+<md-dialog class="statusInfo">
+<form name="pageInformation" novalidate>
+	<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>{{dialogueTitle}}</h2>
+		<span flex></span>
+		<md-button class="cancel" ng-click="cancel()"> <md-icon
+			>&#10006;</md-icon>
+		</md-button>
+	</div>
+	</md-toolbar>
+	<md-dialog-content>
+	<div class="md-dialog-content">
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">MENU</label> <input type="text"
+				ng-model="page.menu" required name="menu" ng-disabled="isReadOnly" limit-to="255" ng-minlength="2" ng-maxlength="255">
+			<div ng-messages="pageInformation.menu.$error">
+				<div ng-message="required">Please enter Menu</div>
+				<div ng-message="minlength">Menu should be minimum 2 character</div>
+				<div ng-message="maxlength">Menu should be maximum 255 character</div>
+			</div>
+			</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">SUB MENU</label> <input type="text"
+				ng-model="page.submenu" required name="submenu"
+				ng-disabled="isReadOnly" limit-to="255" ng-minlength="2" ng-maxlength="255">
+			<div ng-messages="pageInformation.submenu.$error">
+				<div ng-message="required">Please enter Sub Menu</div>
+				<div ng-message="minlength">Sub Menu should be minimum 2 character</div>
+				<div ng-message="maxlength">sub menu should be maximum 255 character</div>
+			</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+			
+		</div>
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">PAGE NAME</label> <input type="text"
+				ng-model="page.pageName" required name="pageName"
+				ng-disabled="isReadOnly" limit-to="255" ng-minlength="2" ng-maxlength="255">
+			<div ng-messages="pageInformation.pageName.$error">
+				<div ng-message="required">Please enter Page Name</div>
+				<div ng-message="minlength">Page Name should be minimum 2 character</div>
+				<div ng-message="maxlength">Page Name should be maximum 255 character</div>
+			</div>
+			</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">URL</label> <input type="text"
+				ng-model="page.url" required name="url" ng-disabled="isReadOnly" limit-to="255" ng-minlength="2" ng-maxlength="255">
+			<div ng-messages="pageInformation.url.$error">
+				<div ng-message="required">Please enter URL</div>
+				<div ng-message="minlength">URL should be minimum 2 character</div>
+				<div ng-message="maxlength">URL should be maximum 255 character</div>
+			</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+
+			
+		</div>
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">DESCRIPTION</label> <input
+				type="text" ng-model="page.description" required name="description"
+				ng-minlength="4" ng-maxlength="255" ng-disabled="isReadOnly" limit-to="255">
+			<div ng-messages="pageInformation.description.$error">
+				<div ng-message="required">Please enter Description</div>
+				<div ng-message="minlength">Description should be minimum 4
+					and maximum 255 character</div>
+				<div ng-message="maxlength">Description should be minimum 4
+					and maximum 255 character</div>
+			</div>
+			</md-input-container>
+		</div>
+	</div>
+	</md-dialog-content>
+
+	<md-dialog-actions layout="row"> <md-button
+		class="md-raised"
+		ng-click="submitPageInformation(pageInformation.$valid,$event)"
+		type="submit"  ng-disabled="pageInformation.$pristine" ng-show="isSaveButtonHide">SAVE</md-button> <md-button
+		class="md-raised" ng-click="answer('not useful')">CANCEL</md-button> </md-dialog-actions>
+</form>
+</md-dialog>
+
+
+
+
+
+

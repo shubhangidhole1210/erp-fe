@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/node_modules/angular-material/angular-material.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+	<script src="/node_modules/angular/angular.js"></script>
+	<script src="/node_modules/angular-aria/angular-aria.js"></script>
+	<script src="/node_modules/angular-animate/angular-animate.js"></script>
+	<script src="/node_modules/angular-material/angular-material.js"></script>
+	<script src="/node_modules/angular-route/angular-route.js"></script>
+	<script src="/node_modules/angular-messages/angular-messages.js"></script>
+	
+	 <link data-require="font-awesome@4.3.0" data-semver="4.3.0" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+	 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/angu-fixed-header-table.js"></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-animate.js"></script>
+	<script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+    <link rel="stylesheet" type="text/css" href="/node_modules/angular-ui-grid/ui-grid.min.css">
+    <script src="/node_modules/angular-ui-grid/ui-grid.min.js">
+   
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<script type="text/javascript" src="js/config/erp-http-interceptor.js"></script>
+	<script type="text/javascript" src="js/services/erp-auth.js"></script>
+	<script type="text/javascript" src="js/services/erpWSService.js"></script>
+	<script type="text/javascript" src="js/controllers/toastCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/menuCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/erpCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/erpViewCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/userCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/userDialogCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/vendorCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/vendorDialogCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/rawMaterialCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/rawMaterialDialogController.js"></script>
+	<script type="text/javascript" src="js/controllers/unitCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/unitDialogCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/productCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/productDialogController.js"></script>
+	<script type="text/javascript" src="js/controllers/RMOrderCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/rmOrderDialog.js"></script>
+	<script type="text/javascript" src="js/controllers/RMVendorAssociationCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/rmVendorAssociationDialogCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/RMInventaryCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/rmInventoryDialogueCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/clientCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/clientDialogCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/productRMAssociationCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/productRmAssociationDialogController.js"></script>
+	<script type="text/javascript" src="js/controllers/productOrderCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/productOrderDialogController.js"></script>
+	<script type="text/javascript" src="js/controllers/productInventoryCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/productInventoryDialogController.js"></script>
+	<script type="text/javascript" src="js/controllers/ProgressBarController.js"></script>
+	<script type="text/javascript" src="js/controllers/homeCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/loginCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/userTypePageAssociationCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/securityCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/administrationCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/qualityInspectionCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/productionPlanCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/userTypeCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/userTypeDialogCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/todaysProductionPlanCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/pageCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/pageDialogCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/statusCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/statusDialogCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/dispatchQuantity.js"></script>
+	<script type="text/javascript" src="js/controllers/productQualityCheckCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/bomReturnDialogCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/stroresCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/productStoreCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/storeOutCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/fileUpladCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/securityCheckOutCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/bomDialogueController.js"></script>
+	<script type="text/javascript" src="js/controllers/returnBom.js"></script>
+	<script type="text/javascript" src="js/controllers/notificationCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/notificationDialogCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/downloadPDFController.js"></script>
+	<script type="text/javascript" src="js/controllers/generateBOM.js"></script>
+	<script type="text/javascript" src="js/controllers/reportCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/rmTypeCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/qualityCheckGuidelineCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/qualityCheckGuideLineDialogCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/rmTypeDialogueController.js"></script>
+	<script type="text/javascript" src="js/controllers/userTypePageAssoDialgueCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/notificationUserAssociationCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/notificationUserAssociationDialogCtrl.js"></script>
+	<script type="text/javascript" src="js/services/utils.js"></script>
+	<script type="text/javascript" src="js/controllers/forgetPassCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/rmQcGuideLineCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/approvalController.js"></script>
+	<script type="text/javascript" src="js/controllers/productQualityCheckGuideLine.js"></script>
+	<script type="text/javascript" src="js/controllers/packingPageController.js"></script>
+	<script type="text/javascript" src="js/controllers/packingPageDialogController.js"></script>
+</head>
+<body ng-app="ERPApp">
+	<div ng-controller="ERPController" class="section-erp-header">
+		<div>
+			<div class="erp-headder">
+				<div class="display-erp-img">
+					<!-- <img alt="" src="image/erp-logo.png" width="120px" height="70px"> -->
+					 <div style="color: white;font-size: 25px;padding-top: 10px;padding-left: 10px">EK-Electronics</div>
+				</div>
+				<div style="display: flex; position: absolute; right: 10px">
+					<div style="color: white; margin-top: 17px"
+						ng-show="displayUserName">{{userId}}</div>
+					<div>
+						<md-button class="md-raised" ng-click="logOut()" ng-show="displayLogoutButton">Log Out</md-button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="section-content">
+	
+	<div ng-controller="menuController" ng-show="displayMenu" class="erp-menubar" ng-class="{'menu-closed':closed}">
+	      <div style="background-color: white;height: 15%;text-align: center;border: 1px solid #106CC8">
+	<!-- <div style=""  class="harmBurger-menu" id="harmBurger-menu">&#9776;</div> -->
+	
+	 <div style="color: #106CC8;font-size: 25px;padding-top: 8px;">Welcome</div>
+	<!--  <div style="float: right;"><img alt="" src="image/Hamburger_icon.svg.png" width="20px" height="20px"></div> -->
+	 <div style="color: #777;font-size: 22px;padding-top: 8px"ng-show="displayUserName">{{userId}}</div>
+	 
+	</div>
+			<!-- <div > -->
+		<div ng-repeat="menuItem in cascadedMenu track by $index" ng-init="menuItem.displaySubmenu = false" ng-animate=" 'animate' ">
+			<div ng-click="menuClicked($index);" 
+				class=" mainMenu" id="{{'menu' + $index}}" ng-class="{'changeERPMenu': $index == selectedIndex }">
+				{{menuItem.menu}} <span class="menu-arrow" ng-class="menuItem.displaySubmenu ? 'menu-arrow-rotate' : ''">&#x276F;</span></div>
+			<div ng-show="menuItem.displaySubmenu" class="sub-menu" >
+				<div ng-repeat="submenu in menuItem.submenu" class="erp-menu">
+					<a href="#{{submenu.url}}">{{submenu.submenu}}</a>
+				</div>
+			</div>
+		</div>
+		<!-- /div> -->
+	</div>
+	<div ng-view id="main-view" ng-class="mainClass" ng-controller="erpViewController"></div>
+	</div>
+	<div class="progress-bar" ng-controller="ProgressBarController" ng-show="displayProgressBar">
+		<div>
+	      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+	    </div>
+	</div>
+  	<div class="company-information">
+	  <!-- <span><img alt="" src="image/unnamed.png" width="30px" height="30px"></span> -->
+	  <!-- <span ><a href="http://www.nextechservices.in/#/">www.nextechservices.in</a></span> -->
+	</div>
+
+</body>
+</html>

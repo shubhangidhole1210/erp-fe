@@ -1,0 +1,88 @@
+<div ng-controller="prodcutQualityCheckCtrl">
+<div class="erp-security" ng-init="getProductionPlanByDate()" >
+<form name="productQualityForm" novalidate>
+ <div class="header">OUT GOING QUALITY ASSURANCE</div>
+  <div class="product-store-date">
+             <span>Date</span>
+             <span>{{currentDate}}</span>
+          </div>
+     <table class="form-table">
+        <tr>
+           <th class="table-info">No.</th>
+          <th class="table-info">Product</th>
+          <th class="table-info">Target Quantity</th>
+          <th class="table-info">QC Pending Quantity</th>
+          <th class="table-info">QC Pass Quantity</th>
+          <th class="table-info">QC Repaired Quantity</th>
+          <th class="table-info">QC Fail Quantity</th>
+          <th class="table-info">Remark</th>
+          <th class="table-info">QC Guideline </th>
+        </tr>
+        <tr ng-repeat="productionplan in productionPlans">
+            <td class="table-info">{{$index+1}}</td>
+           <td class="table-info">{{productionplan.productId.partNumber}}</td>
+           <td class="table-info">{{productionplan.targetQuantity}}</td>
+           <td class="table-info">{{productionplan.qualityPendingQuantity}}</td>
+           <td class="table-info">
+           		<md-input-container class="md-block" flex-gt-sm>
+					<input type="number" ng-model="productionplan.passQuantity"  name="passQuantity{{$index}}" ng-change="validatePassAndFailQuantity(productionplan.qualityPendingQuantity,productionplan.passQuantity,productionplan.failQuantity1,$index)" >
+					<div ng-messages="productQualityForm.passQuantity$index.$error">
+             	  <div ng-message="required">please enter Pass Quantity </div>
+            	</div>
+				</md-input-container>
+			</td>
+			<td class="table-info">
+           		{{productionplan.repairedQuantity}}
+			</td>
+			<td class="table-info">
+				
+				<md-input-container class="md-block" flex-gt-sm>
+					<input type="number" ng-model="productionplan.failQuantity1" name="failQuantity{{$index}}" id="failQuantity"   ng-change="validatePassAndFailQuantity(productionplan.qualityPendingQuantity,productionplan.passQuantity,productionplan.failQuantity1,$index)">
+				<div ng-show="productQualityForm.failQuantity{{$index}}.$error.customMsg" class="error-msg">Total of pass and fail quantity it  should be equal to {{productionplan.qualityPendingQuantity}}</div>
+				</md-input-container>
+				
+            	
+			</td>	
+			<td class="table-info">
+			   <md-input-container class="md-block" flex-gt-sm>
+					<input type="text" ng-model="productionplan.remark" name="remark" required>
+					 <div ng-messages="productQualityForm.remark.$error">
+					<div ng-message="required">Please enter Remark</div>
+            	</div>
+				</md-input-container>
+			</td>
+			    <td><md-button class="actionButton"  ng-click="showProductGuideLine($index)"  style="">Guide Line</md-button></td>
+        </tr>
+     </table>
+     
+           <div class="active-information" ng-show="isProjectPrsentForQualitycheck">
+                          {{message}}
+           </div>
+     
+      <div class="quality-btn" ng-show="isQualityCheckButton">
+             <md-dialog-actions layout="row">
+      <md-button class="actionButton" ng-click="submitInformation(productQualityForm.$valid,$event)" style="" ng-disabled="isReadOnly"  type="submit">SAVE</md-button>
+      <md-button class="actionButton" ng-click="cancelProductQualityForm()" style="">CANCEL</md-button>
+    </md-dialog-actions>
+        </div>
+      </form>  
+        
+</div>
+<div id="guideLinePopUp" style="padding-top: 150px" ng-show="isGuideLinePopUp">
+
+<div class="popup-container">
+<div class="pop-up-info">
+	<div class="header">Product Quality Guideline</div>
+			
+     <div align="left" class="show-Guideline">{{productQCGuidelineList.guidelines}}</div>
+     <div class="guideline-information" ng-show="isGuideLinePresent">There is no quality check guidlines for this Raw Material</div>
+     
+      <div class="cancel-btn"> 
+      <md-button class="md-raised" ng-click="cancelGuideLinePopUp()">CANCEL</md-button>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>

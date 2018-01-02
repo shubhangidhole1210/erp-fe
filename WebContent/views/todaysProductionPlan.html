@@ -1,0 +1,91 @@
+<div ng-controller="todaysProductionPlanCtrl">
+  <div class="erp-information">
+	  <form name="todaysProductionPlanForm" novalidate>
+	    <div class="table-header"><i class="material-icons">event_note</i> Today's Production Plan</div>
+	    
+	    <div ng-init="getTodaysProductionPlan()">
+	        <div class="product-store-date">
+		             <span>Date</span>
+		             <span>{{currentDate}}</span>
+		    </div>
+		    <table>
+		       <tr>
+		       <th>Product</th>
+		       <th>Target Quantity</th>
+		       <th>Completed Quantity</th>
+		       <th>Failed Quantity</th>
+		       <th>QC Pass Quantity</th>
+		       <th>QC Pending Quantity</th>
+		       <th>Store Out Quantity</th>
+		       <th>Achieved Quantity</th>
+		       <th>Repaired Quantity</th>
+		       <th>Remark</th>
+		       </tr>
+		       <tr ng-repeat="product in productList" class="{{product.statusId.name | lowercase}}">
+		        	<td class="md-row"><i class="material-icons"><md-tooltip md-direction="top">{{product.statusId.description}} {{ product.statusId.statusName === 'NEW-PRODUCTION-PLAN' ? 'Please store out raw material for production' : ''}}</md-tooltip>error_outline</i>{{product.productId.partNumber}}</td>
+		        	<td>{{product.targetQuantity}}</td>
+		        	<td>{{product.completedQuantity}}</td>
+		        	
+					<td>
+					    <md-input-container class="md-block" flex-gt-sm>
+							<input type="number" ng-model="product.failQuantity" name="failedQuantity" ng-value="{{product.failQuantity}}" ng-disabled="true" >
+						</md-input-container>
+					</td>
+					<td>
+					    <md-input-container class="md-block" flex-gt-sm>
+							<input type="number" ng-model="product.qualityCheckedQuantity" name="failedQuantity" ng-disabled="true" >
+						</md-input-container>
+					</td>
+					<td>
+					    <md-input-container class="md-block" flex-gt-sm>
+							<input type="number" ng-model="product.qualityPendingQuantity" name="qualityPendingQuantity" ng-disabled="true">
+						</md-input-container>
+					</td>
+					 <td>
+		         		<md-input-container class="md-block" flex-gt-sm>
+							<input type="number" ng-model="product.storeOutQuantity" name="storeOutQuantity" ng-disabled="true">
+						</md-input-container>
+					</td>
+					
+					<td>
+		         		<md-input-container class="md-block" flex-gt-sm>
+							<input type="number" ng-model="product.achived" name="achivedQuantity{{$index}}"  min="0" ng-change="validateTargetQuantity(product.storeOutQuantity,product.completedQuantity,product.failQuantity,product.qualityPendingQuantity,product.achived,product.qualityCheckedQuantity,$index)">
+							<div ng-show="todaysProductionPlanForm.achivedQuantity{{$index}}.$error.min" class="error-msg">Quantity should be greater then 0</div>
+							<div ng-show="todaysProductionPlanForm.achivedQuantity{{$index}}.$error.customError" class="error-msg">Please Store out Raw Material if you want to manufacture more products</div>
+						</md-input-container>
+					</td>
+					
+					<td>
+		         		<md-input-container class="md-block" flex-gt-sm>
+							<input type="number" ng-model="product.repairedQuantity" name="repairedQuantity{{$index}}"  min="0" max="{{product.failQuantity}}">
+							<div ng-show="todaysProductionPlanForm.repairedQuantity{{$index}}.$error.min" class="error-msg">Quantity should be greater then 0</div>
+							<div ng-show="todaysProductionPlanForm.repairedQuantity{{$index}}.$error.max" class="error-msg">Quantity should not be greater then {{product.failQuantity}} </div>
+						</md-input-container>
+					</td>
+					<td>
+				  		<md-input-container class="md-block" flex-gt-sm>
+							<input type="text" ng-model="product.remark" name="remark" >
+							<div ng-messages="todaysProductionPlanForm.remark.$error">
+             					<div ng-message="required">please enter Remark </div>
+            				</div>
+						</md-input-container>
+					</td>
+		       </tr>
+		    </table>
+	    </div>
+	    <div ng-show="isTodaysProductionPlanPresent" class="active-information">
+			 Please update production Plan.
+		</div>
+	       <div class="todayPlan-save-btn" ng-show="isButton">
+	             <md-dialog-actions layout="row">
+	      			<md-button class="actionButton" ng-click="submitTodaysProductionplanInformation(todaysProductionPlanForm.$valid,$event)" ng-disabled="isReadOnly" type="submit">Save</md-button>
+	      			<md-button class="actionButton" ng-click="cancelTodaysProductionPlan()" style="">Cancel</md-button>
+	    		</md-dialog-actions>
+	       </div>
+	    
+	</form>
+  </div>
+  
+</div>
+
+

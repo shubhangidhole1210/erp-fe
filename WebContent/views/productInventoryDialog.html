@@ -1,0 +1,96 @@
+<md-dialog class="statusInfo">
+<form name="productInventoryInformation" novalidate>
+	<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>{{dialogueTitle}}</h2>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="cancel()"> <md-icon>&#10006;</md-icon>
+		</md-button>
+	</div>
+	</md-toolbar>
+
+	<md-dialog-content>
+	<div class="md-dialog-content">
+	
+		<md-input-container style="width:100%"> <label>PRODUCT*</label>
+		<md-select ng-model="productInventory.productId.id" name="product"
+			ng-disabled="isProductreadOnly" ng-required="true" required
+			ng-init="getProductList()"> <md-option
+			ng-repeat="product in prducts" ng-value="product.id">
+		{{product.partNumber}} </md-option> </md-select>
+		<div ng-messages="productInventoryInformation.product.$error">
+			<div ng-message="required">Please Select Product</div>
+		</div>
+		</md-input-container>	
+	
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">DESCRIPTION</label> <input
+				type="text" ng-model="productInventory.description" required
+				name="description" ng-minlength="4" ng-maxlength="255"
+				ng-disabled="isReadOnly">
+			<div ng-messages="productInventoryInformation.description.$error">
+				<div ng-message="required">Description must be required</div>
+				<div ng-message="minlength">Description must be grater than 4
+					or less than 255 characters</div>
+			</div>
+			</md-input-container>
+			
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">QUANITY AVAILABLE</label> <input
+				type="text" ng-model="productInventory.quantityAvailable" required
+				name="quantityavailable" ng-disabled="isReadOnly"
+				onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+			<div
+				ng-messages="productInventoryInformation.quantityavailable.$error">
+				<div ng-message="required">Please enter available quantity</div>
+			</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+			
+		</div>
+		
+          <div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">MINIMUM QUANTITY</label> <input
+				type="number" ng-model="productInventory.minimumQuantity" required name="minQuantity" ng-disabled="isReadOnly"  min="0" max="9999" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+			<div ng-messages="productInventoryInformation.minQuantity.$error">
+				<div ng-message="required">Please enter Minimum Quantity</div>
+				<div ng-message="min">Invalid quantity!! Quantity should b 0 or greater than 0</div>
+				<div ng-message="max">Invalid quantity!! maximum Quantity 9999</div>
+			</div>
+			</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">MAXIMUM QUANTITY</label> <input
+				type="number" ng-model="productInventory.maximumQuantity"
+				 required name="maxQuantity" ng-disabled="isReadOnly" min="0" max="9999" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+			<div ng-messages="productInventoryInformation.maxQuantity.$error">
+				<div ng-message="required">Please enter Maximum Quantity</div>
+				<div ng-message="min">Invalid quantity!! Quantity should b 0 or greater than 0</div>
+				<div ng-message="max">Invalid quantity!! maximum Quantity 9999</div>
+			</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+			
+		</div>
+	</div>
+
+	</md-dialog-content>
+
+	<md-dialog-actions layout="row"> <md-button
+		class="md-raised"
+		ng-click="submitProductInventoryInformation(productInventoryInformation.$valid,$event)"
+		type="submit" ng-disabled="productInventoryInformation.$pristine" ng-show="isSaveButtonHide">SAVE</md-button> <md-button
+		class="md-raised" ng-click="answer('not useful')">CANCEL</md-button>
+	</md-dialog-actions>
+
+</form>
+</md-dialog>
+
+
+
+
+
+

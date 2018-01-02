@@ -1,0 +1,77 @@
+<md-dialog class="dialogueInfo erp-dialog">
+<form name="RMInventaryInformation" novalidate>
+	 <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{information}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">&#10006;</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+	<md-dialog-content>
+	<div class="md-dialog-content">
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">QUANTITY AVAILABLE</label> <input
+				type="number" ng-model="rmInventory.quantityAvailable"
+				value="rmInventary.quantityAvailable" required
+				name="quantityAvailable" ng-disabled="isReadOnly" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+			<div ng-messages="RMInventaryInformation.quantityAvailable.$error">
+				<div ng-message="required">Please enter available quantity</div>
+			</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+			<md-input-container class="drop-down"> <label>RAW MATERIAL</label> <md-select
+				ng-model="rmInventory.rawmaterialId.id" name="RMInventory"
+				value="RMInventory.id" ng-disabled="isRmVisible" ng-required="true"
+				rrquired ng-init="getRmList()"> <md-option ng-repeat="rawMaterial in rmList"
+				ng-value="rawMaterial.id"> {{rawMaterial.partNumber}} </md-option> </md-select>
+			<div ng-messages="RMInventaryInformation.RMInventory.$error">
+				<div ng-message="required">Please Select Raw Material</div>
+			</div>
+			</md-input-container>
+		</div>
+		
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">MINIMUM QUANTITY</label> <input
+				type="number" ng-model="rmInventory.minimumQuantity" required name="minQuantity" ng-disabled="isReadOnly"  min="0" max="9999" onkeypress='return event.charCode >= 48 && event.charCode <= 57'> 
+			<div ng-messages="RMInventaryInformation.minQuantity.$error">
+				<div ng-message="required">Please enter Minimum Quantity</div>
+				<div ng-message="min">Invalid quantity!! Quantity should b 0 or greater than 0</div>
+				<div ng-message="max">Invalid quantity!! maximum Quantity 9999</div>
+			</div>
+			</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">MAXIMUM QUANTITY</label> <input
+				type="number" ng-model="rmInventory.maximumQuantity"
+				 required name="maxQuantity" ng-disabled="isReadOnly" min="0" max="9999" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+			<div ng-messages="RMInventaryInformation.maxQuantity.$error">
+				<div ng-message="required">Please enter Maximum Quantity</div>
+				<div ng-message="min">Invalid quantity!! Quantity should b 0 or greater than 0</div>
+				<div ng-message="max">Invalid quantity!! maximum Quantity 9999</div>
+			</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+			
+		</div>
+		
+	</div>
+	</md-dialog-content>
+	<md-dialog-actions layout="row"> <md-button
+		class="md-raised"
+		ng-click="submitRMInventoryInformation(RMInventaryInformation.$valid,$event)"
+		type="submit"ng-disabled="RMInventaryInformation.$pristine" ng-show="isSaveButtonHide" >SAVE</md-button> <md-button
+		class="md-raised" ng-click="answer('not useful')">CANCEL</md-button>
+	</md-dialog-actions>
+
+</form>
+</md-dialog>
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+<div ng-controller="generateBomCtrl">
+<div class="erp-security">
+<div class="qualitycheck">
+   	<div class="header">GENERATE BOM HERE</div>
+ <div class="qualityInspection">
+ <form name="bomGenerateForm" novalidate>
+     <div layout-gt-sm="row">
+			<md-input-container> <label>PART NUMNBER
+			</label> <md-select ng-model="product.id" name=""
+				ng-disabled="isVendorId" name="vendorId"
+				required ng-change="getRawMaterials()" ng-init="getProductRMAssociationList()">
+			<md-option ng-repeat="product in productList" ng-value="product.id">
+			{{product.partNumber}} </md-option> </md-select> 
+			 <div ng-messages="RMOrderInformation.vendorId.$error">
+				<div ng-message="required">Please select Vendor</div>
+			</div>
+			</md-input-container>
+		</div>       
+    <table class="form-table">
+              <tr class="form-table-row">
+              	<th class="table-info">NO</th>
+               <th  class="table-info">RAW MATERIAL</th>
+               <th  class="table-info">VENDOR</th>
+               <th  class="table-info">QUANTITY</th>
+               <th>PRICE</th>
+              </tr>
+              <tr ng-repeat="productRM in productRMList" class="form-table-row">
+              <td  class="table-info">{{$index+1}}</td>
+                 <td  class="table-info">
+            <md-input-container class="drop-down">
+          <div ng-init="getVenodrList($index, productRM.rawmaterialId.id)">{{productRM.rawmaterialId.partNumber}}</div>
+        </md-input-container>
+                 </td>
+                 <td  class="table-info">
+                     <md-input-container class="drop-down">
+          <label>VENODR</label>
+          <md-select ng-model="productRM.vendor" name="product" ng-change="onRawMaterialQuantityChange($index, productRM.quantity,productRM.vendor.pricePerUnit)">
+            <md-option ng-repeat="vendor in productRM.vendorList" ng-value="vendor">
+            {{vendor.vendorId.companyName}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+                 </td>
+                 <td  class="table-info">
+                    <md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">QUANTITY</label> <input
+				type="number" ng-model="productRM.quantity" 
+			ng-disabled="true"	name="quantity{{$index}}"  min="1">
+			</md-input-container>
+                 </td>
+                  <div ng-messages="bomGenerateForm.quantity$index.$error">
+			         <div ng-message="min" class="error-msg">Price should be greater than 0</div>
+			      </div>
+                 <td>
+                <md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">Price</label> <input
+				type="number" ng-model="productRM.price" name="pricePerUnit" value="{{productRM.price}}" ng-disabled="true">
+			</md-input-container>
+                 </td>
+              </tr>
+           </table>
+            <md-dialog-actions layout="row" class="button-ui">
+      
+      <md-button class="actionButton" ng-click="submitBomInformation(bomGenerateForm.$valid,$event)" ng-disabled="isReadOnly" type="submit" style="">SAVE</md-button>
+      <md-button class="actionButton" ng-click="cancelBomForm()" >CANCEL</md-button>
+    </md-dialog-actions>
+ </form>
+ </div> 	
+</div>
+</div>
+</div>

@@ -1,0 +1,109 @@
+<md-dialog class="statusInfo">
+<form name="notificationForm" novalidate>
+	<md-toolbar>
+	<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>{{dialogueTitle}}</h2>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="cancel()"> <md-icon>&#10006;</md-icon>
+		</md-button>
+	</div>
+	</md-toolbar>
+	</md-toolbar>
+	<md-dialog-content>
+	<div class="md-dialog-content">
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">Name</label> <input type="text"
+				ng-model="notification.name" required name="name" ng-disabled="isReadOnly" limit-to="255" ng-minlength="2" ng-maxlength="255">
+			<div ng-messages="notificationForm.name.$error">
+				<div ng-message="required">Please enter Name</div>
+				<div ng-message="minlength">Name should be minimum 2 character</div>
+				<div ng-message="maxlength">Name should be maximum 255 character</div>
+			</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">TYPE</label> <input type="text"
+				ng-model="notification.type" required name="type"
+				ng-disabled="isReadOnly" limit-to="255" ng-minlength="2" ng-maxlength="255">
+			<div ng-messages="notificationForm.type.$error">
+				<div ng-message="required">Please enter Type</div>
+				<div ng-message="minlength">Type should be minimum 2 character</div>
+				<div ng-message="maxlength">Type should be maximum 255 character</div>
+			</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">TEMPLATE</label> <input type="text"
+				ng-model="notification.template" required name="template"
+				ng-disabled="isReadOnly" limit-to="255" ng-minlength="2" ng-maxlength="255">
+			<div ng-messages="notificationForm.template.$error">
+				<div ng-message="required">Please enter Template </div>
+				<div ng-message="minlength">Template should be minimum 2 character</div>
+				<div ng-message="maxlength">Template should be maximum 255 character</div>
+			</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">SUBJECT</label> <input type="text"
+				ng-model="notification.subject" required name="subject" ng-disabled="isReadOnly" limit-to="255" ng-minlength="2" ng-maxlength="255">
+			<div ng-messages="notificationForm.subject.$error">
+				<div ng-message="required">Please enter Subject</div>
+				<div ng-message="minlength">Subject should be minimum 2 character</div>
+				<div ng-message="maxlength">Subject should be maximum 255 character</div>
+			</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">DESCRIPTION</label> <input
+				type="text" ng-model="notification.description" required name="description"
+				ng-minlength="4" ng-maxlength="255" ng-disabled="isReadOnly" limit-to="255">
+			<div ng-messages="notificationForm.description.$error">
+				<div ng-message="required">Please enter Description</div>
+				<div ng-message="minlength">Description should be minimum 4
+					and maximum 255 character</div>
+				<div ng-message="maxlength">Description should be minimum 4
+					and maximum 255 character</div>
+			</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">BEAN CLASS</label> <input
+				type="text" ng-model="notification.beanClass" required name="beanClass"
+				ng-minlength="2" ng-maxlength="255" ng-disabled="isReadOnly" limit-to="255">
+			<div ng-messages="notificationForm.beanClass.$error">
+				<div ng-message="required">Please enter Bean Class</div>
+				<div ng-message="minlength">Bean Class Name should be minimum 2 character</div>
+				<div ng-message="maxlength">Bean Class Name should be maximum 255 character</div>
+			</div>
+			</md-input-container>
+		</div>
+		  <div layout-gt-sm="row">
+          <div layout-gt-sm="row">
+			<md-input-container class="drop-down"> <label>STATUS</label> <md-select ng-model="notification.status1.id" name="status"
+				 ng-disabled="isReadOnly" ng-init="statusList()"
+				ng-required="true" rrquired> <md-option
+				ng-repeat="status in status" ng-value="status.id">
+			{{status.statusName}} </md-option> </md-select>
+			<div ng-messages="notificationForm.status.$error">
+				<div ng-message="required">Please Select Status</div>
+			</div>
+			</md-input-container>
+		</div>
+		</div>	
+	</div>
+	</md-dialog-content>
+	<md-dialog-actions layout="row"> <md-button
+		class="md-raised"
+		ng-click="submitnotificationForm(notificationForm.$valid,$event)"
+		type="submit" ng-disabled="notificationForm.$pristine" ng-show="isSaveButtonHide">SAVE</md-button> <md-button
+		class="md-raised" ng-click="answer('not useful')">CANCEL</md-button> </md-dialog-actions>
+</form>
+</md-dialog>
+

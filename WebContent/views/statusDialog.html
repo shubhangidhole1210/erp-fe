@@ -1,0 +1,69 @@
+<md-dialog class="statusInfo">
+<form name="statusInformation" novalidate>
+	<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>{{dialogueTitle}}</h2>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="cancel()"> <md-icon>&#10006;</md-icon>
+		</md-button>
+	</div>
+	</md-toolbar>
+	<md-dialog-content>
+	<div class="md-dialog-content">
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">NAME</label> <input type="text"
+				ng-model="status.statusName" value="status.statusName" required name="name"
+				ng-minlength="2" ng-disabled="isReadOnly" ng-maxlength="255" limit-to="255">
+			<div ng-messages="statusInformation.name.$error">
+				<div ng-message="required">Please enter Status</div>
+				<div ng-message="minlength">status should be minimum 2
+					character</div>
+					<div ng-message="maxlength">Status should be maximum 255 character</div>
+			</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">DESCRIPTION</label> <input
+				type="text" ng-model="status.description" value="status.description"
+				required name="description" ng-minlength="4" ng-maxlength="255"
+				ng-disabled="isReadOnly" limit-to="255">
+			<div ng-messages="statusInformation.description.$error">
+				<div ng-message="required">Please enter Description</div>
+				<div ng-message="minlength">Description Should be
+					minimum 4 character</div>
+				<div ng-message="maxlength">Description should be maximum 255 character</div>	
+			</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">TYPE</label> <input type="text"
+				ng-model="status.statusType" value="status.statusTyp" required name="type"
+				ng-disabled="isReadOnly" limit-to="255" ng-minlength="2" ng-maxlength="255">
+			<div ng-messages="statusInformation.type.$error">
+				<div ng-message="required">Please enter Status Type</div>
+				<div ng-message="minlength">Status Type should be minimum 2 character</div>
+				<div ng-message="maxlength">Status Type should be maximum 255 character</div>
+			</div>
+			</md-input-container>
+		</div>
+		
+	</div>
+	</md-dialog-content>
+	<md-dialog-actions layout="row"> <md-button
+		class="md-raised"
+		ng-click="submitStatusInformation(statusInformation.$valid,$event)"
+		type="submit"  ng-disabled="statusInformation.$pristine" >SAVE</md-button> <md-button
+		class="md-raised" ng-click="answer('not useful')">CANCEL</md-button>
+	</md-dialog-actions>
+
+</form>
+</md-dialog>
+
+
+
+
+
+

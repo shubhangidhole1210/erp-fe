@@ -1,0 +1,167 @@
+<md-dialog class="dialogueInfo">
+<form name="clientInformation" novalidate>
+	<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>{{dialogueTitle}}</h2>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="cancel()"> <md-icon>&#10006;</md-icon>
+		</md-button>
+	</div>
+	</md-toolbar>
+
+	<md-dialog-content>
+	<div class="md-dialog-content">
+
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">COMPANY NAME</label> <input
+				type="text" ng-model="client.companyName" required
+				name="companyname" ng-disabled="isReadOnly" limit-to="255" ng-minlength="2" ng-maxlength="255" ng-change="onChangeCompanyName()">
+			<div ng-messages="clientInformation.companyname.$error">
+				<div ng-message="required">Please enter Company Name</div>
+				<div ng-message="minlength">Company Name should be minimum 2 and maximum 255 character</div>
+				<div ng-message="maxlength">Company Name should be minimum 2 and maximum 255 character</div>
+				<blink ng-message="companyNameApiError">{{companyNameApiErrorMsg}}</blink>
+			</div>
+			</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">DESCRIPTION</label> <input
+				type="text" ng-model="client.description" required
+				name="description" ng-minlength="4" ng-maxlength="255"
+				ng-disabled="isReadOnly" limit-to="255">
+			<div ng-messages="clientInformation.description.$error">
+				<div ng-message="required">Please enter Description</div>
+				<div ng-message="minlength">Description should be minimum 4
+					and maximum 255 character</div>
+				<div ng-message="maxlength">Description should be minimum 4
+					and maximum 255 character</div>
+			</div>
+			</md-input-container>
+		</div>
+
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">ADDRESS</label> <input type="text"
+				ng-model="client.address" required name="address"
+				ng-disabled="isReadOnly" limit-to="255" ng-minlength="2" ng-maxlength="255">
+			<div ng-messages="clientInformation.address.$error">
+				<div ng-message="required">Please enter Client Address</div>
+				<div ng-message="minlength">Address should be minimum 2 and maximum 255 character</div>
+				<div ng-message="maxlength">Address should be minimum 2 and maximum 255 character</div>
+			</div>
+			</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">EMAIL ID</label> <input type="email"
+				ng-model="client.emailId" required name="emailid"
+				ng-disabled="isReadOnly" placeholder="client@gmail.com" limit-to="255" ng-change="onChangeEmailId()" ng-pattern="/[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g">
+			<div ng-messages="clientInformation.emailid.$error">
+				<div ng-message="required">Please enter Email Id</div>
+				<div ng-message="email">Please enter valid Email Id</div>
+				<div ng-message="pattern">Please enter valid Email Id</div>
+				<blink ng-message="emailIdError">{{emailIdErrorMsg}}</blink>
+			</div>
+			</md-input-container>
+		</div>
+
+	
+
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">CONTACT NUMBER</label> <input
+				limit-to="10" type="text" ng-model="client.contactNumber" required
+				name="contactnumber" ng-minlength="10" ng-maxlength="10"
+				ng-pattern="/^[0-9]+$/" ng-disabled="isReadOnly"
+				onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+			<div ng-messages="clientInformation .contactnumber.$error">
+				<div ng-message="required">Please enter client Mobile Number</div>
+				<div ng-message="minlength">Mobile Number must be 10 digit</div>
+				<div ng-message="maxlength">Mobile Number must be 10 digit</div>
+				<div ng-message="pattern">Please enter valid mobile number</div>
+			</div>
+			</md-input-container>
+				<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">CONTACT PERSON NAME</label> <input
+				type="type" ng-model="client.contactPersonName" required
+				name="contactpersonname" ng-disabled="isReadOnly" ng-minlength="2" ng-maxlength="255" limit-to="255">
+			<div ng-messages="clientInformation .contactpersonname.$error">
+				<div ng-message="required">Please enter Contact Person Name</div>
+				<div ng-message="minlength">Name should be minimum 2 character</div>
+				<div ng-message="maxlength">Name should be maximum 255 charcater</div>
+			</div>
+			</md-input-container>
+		</div>
+		 <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label class="input-filed-label">COMMISIONEARATE</label>
+            <input  type="text" name="cstNo" ng-model="client.commisionerate" required value="client.commisionerate" limit-to="255" ng-minlength="2" ng-maxlength="255" ng-disabled="isReadOnly"  >
+              <div ng-messages="clientInformation .cstNo.$error">
+                 <div ng-message="required">Please enter commisionearate</div>
+                 <div ng-message="minlength">commisionearate should be minimum 4 character</div>
+                  <div ng-message="maxlength">commisionearate should be maximum 255 character</div>
+              </div>
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm type="password">
+             <label class="input-filed-label">CST TIN NO</label>
+            <input  type="text" name="cstNo" ng-model="client.cst" required value="client.cst" limit-to="255" ng-minlength="2" ng-maxlength="255" ng-disabled="isReadOnly"  >
+              <div ng-messages="clientInformation .cstNo.$error">
+                 <div ng-message="required">Please enter CST No</div>
+                 <div ng-message="minlength">CST No should be minimum 2 character</div>
+                  <div ng-message="maxlength">CST No should be maximum 255 character</div>
+              </div>
+          </md-input-container>
+        </div>
+        
+         <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label class="input-filed-label">CUSTOMER E.C.C NO</label>
+            <input  type="text" name="eccNo" ng-model="client.customerEccNumber" required value="client.customerEccNumber" limit-to="255" ng-minlength="2" ng-maxlength="255" ng-disabled="isReadOnly"  >
+              <div ng-messages="clientInformation .eccNo.$error">
+                 <div ng-message="required">Please enter E.C.C No</div>
+                 <div ng-message="minlength">E.C.C No should be minimum 2 character</div>
+                  <div ng-message="maxlength">E.C.C No should be maximum 255 character</div>
+              </div>
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm type="password">
+             <label class="input-filed-label">DIVISION</label>
+            <input  type="text" name="division" ng-model="client.division" required value="client.division" limit-to="255" ng-minlength="2" ng-maxlength="255" ng-disabled="isReadOnly"  >
+              <div ng-messages="clientInformation .division.$error">
+                 <div ng-message="required">Please enter Division</div>
+                 <div ng-message="minlength">Division should be minimum 2 character</div>
+                  <div ng-message="maxlength">Division should be maximum 255 character</div>
+              </div>
+          </md-input-container>
+        </div> 
+        
+         <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label class="input-filed-label">VAT TIN NO</label>
+            <input  type="text" name="vatNo" ng-model="client.vatNo" required value="client.vatNo" limit-to="255" ng-minlength="2" ng-maxlength="255" ng-disabled="isReadOnly"  >
+              <div ng-messages="clientInformation .vatNo.$error">
+                 <div ng-message="required">Please enter VAT No</div>
+                 <div ng-message="minlength">VAT No should be minimum 2 character</div>
+                  <div ng-message="maxlength">VAT No should be maximum 255 character</div>
+              </div>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm type="password">
+             <label class="input-filed-label">RANGE</label>
+            <input  type="text" name="range" ng-model="client.renge" required value="client.renge" limit-to="255" ng-minlength="2" ng-maxlength="255" ng-disabled="isReadOnly"  >
+              <div ng-messages="clientInformation .range.$error">
+                 <div ng-message="required">Please enter Range</div>
+                 <div ng-message="minlength">Range should be minimum 2 character</div>
+                  <div ng-message="maxlength">Range should be maximum 255 character</div>
+              </div>
+          </md-input-container>
+        </div> 
+        
+        
+	</div>
+	</md-dialog-content>
+	<md-dialog-actions layout="row"> <md-button
+		class="md-raised"
+		ng-click="submitClientInformation(clientInformation.$valid,$event)"
+		type="submit"   ng-disabled="clientInformation.$pristine" ng-disabled="clientInformation.$pristine" >SAVE</md-button> <md-button
+		class="md-raised" ng-click="answer('not useful')">CANCEL</md-button> </md-dialog-actions>
+</form>
+</md-dialog>

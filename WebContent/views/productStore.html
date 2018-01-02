@@ -1,0 +1,53 @@
+<div ng-controller="productStoreCtrl">
+<div class="erp-security" ng-init="getProductionPlanByDate()" >
+<form name="productStoreForm" novalidate>
+ <div class="header">PRODUCT STORE</div>
+  <div style="" class="product-store-date">
+             <span>Date</span>
+             <span>{{currentDate}}</span>
+          </div>
+     <table class="form-table">
+        <tr >
+          <th class="table-info">NO</th>
+          <th class="table-info">PRODUCT ID</th>
+          <th class="table-info">TARGET QUANTITY</th>
+          <th class="table-info">QC PASS QUANTITY</th>
+          <th class="table-info">PACK QUANTITY</th>
+          <th class="table-info">PASS QUANTITY</th>
+          <!-- <th>FAILD QUANTITY</th> -->
+          <th>REMARK</th>
+        </tr>
+        <tr ng-repeat="productionplan in productionPlans">
+           <td class="table-info">{{$index+1}}</td>
+           <td class="table-info">{{productionplan.productId.partNumber}}</td>
+           <td class="table-info">{{productionplan.targetQuantity}}</td>
+           <td class="table-info">{{productionplan.qualityCheckedQuantity}}</td>
+           <td class="table-info">{{productionplan.packedQuantity}}</td>
+           <td><md-input-container class="md-block" flex-gt-sm  class="table-info">
+				<input type="number" ng-model="productionplan.passQuantity" name="passQuantity{{$index}}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-change="validatePassQuantity(productionplan.packedQuantity,productionplan.passQuantity,$index)" >
+				 <div ng-messages="productStoreForm.passQuantity.$error">
+				    <div ng-message="required">Please enter quantity</div>
+				 </div>
+				  <div ng-show="productStoreForm.passQuantity{{$index}}.$error.passQuanityMsg" class="error-msg">Pass quantity should be equal to pack quantity</div>
+				</md-input-container></td>
+				
+				
+			<td>
+			
+			   <md-input-container class="md-block" flex-gt-sm>
+				<input type="text" ng-model="productionplan.remark" name="remark">
+				</md-input-container>
+			</td>
+        </tr>
+     </table>
+       <div ng-show="noPrductOrderPresent" class="active-information">There is no product in product store out, you should check product quality first.</div>
+      <div class="quality-btn" ng-show="isButtonHide">
+             <md-dialog-actions layout="row">
+      <md-button class="actionButton"  ng-disabled="isSaveButtonDisabled" ng-click="submitProductStoreInformation(productStoreForm.$valid,$event)" style="" type="submit">SAVE</md-button>
+      <md-button class="actionButton" ng-click="cancelProductStore()" >CANCEL</md-button>
+    </md-dialog-actions>
+        </div>
+      </form>  
+</div>
+
+</div>

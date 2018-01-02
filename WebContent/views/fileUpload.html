@@ -1,0 +1,13 @@
+<div ng-controller="fileUplodCtrl" ng-init="populateRawMaterials()">
+  <div class="erp-information">
+        <input type="file" id="file1" name="file" multiple
+            ng-files="getTheFiles($files)" ng-model="file"/>
+			<input type="text" ng-model="clientno">
+        <input type="button" ng-click="uploadFiles(clientno)"  value="Upload" />
+  </div>
+
+  
+  </div>
+<style>
+       
+</style>

@@ -1,0 +1,83 @@
+
+
+<!-- <div ng-controller="productionPlanCtrl">
+<div class="erp-information" ng-init="getProductionPlanList()">
+<h1 class="table-header">PRODUCTION PLAN</h1>
+<form  name="prodctionPlan " novalidate style="width: 900px;margin-top: 5%">
+<div class="display-scroll">
+<ion-content delegate-handle="mainScroll" has-bouncing="true" scroll="true">
+<div class="displayScroll">
+<table id="customers" class="">
+ <tr>
+   <th>PRODUCTION PLAN</th>
+   <th ng-repeat="days in alldays" style="font-size: 17px; text-align: center;">{{days| date:'dd-MM-yyyy'}}</th>
+ </tr>
+ <tr ng-repeat="product in products" >
+    <td style="font-size: 17px; text-align: center">
+      <table>
+      <th>Part Number</th>
+      <th>Inventory Qty</th>
+      <th> Pending Qty</th>
+      <tr>
+        <td>{{product.productName}}</td>
+        <td>{{product.productBalanceQty}}</td>
+        <td>{{product.productTargetQty}}</td>
+        
+      </tr>
+      </table>
+    </td>
+ 
+      <td ng-repeat="productProductionPlanItem in product.productProductionPlan" >
+    <table >
+      <th>Target</th>
+      <th>Achieved</th>
+      <tr>
+        <td>
+        <input type="number" class="quantity-input" ng-model="productProductionPlanItem.target_quantity" max="999999999" name="targetQuantity{{$index}}">
+          <div ng-show="prodctionPlan.targetQuantity{{$index}}.$error.max" class="error-msg">Enter quantity upto 99999999</div>
+        </td>
+        <td>
+         <input type="number" class="quantity-input" ng-model="productProductionPlanItem.achived_quantity" ng-disabled="true">
+        </td>
+      </tr>
+    </table>
+  </td>
+ 
+ </tr>
+</table>
+</div>
+
+
+</ion-content>
+</div>
+<div style="margin-top: 2%;margin-left: 40%;">
+  <md-dialog-actions layout="row">
+      
+      <md-button class="actionButton" ng-click="createDefaultProductionPlan()" style="">CREATE DEFAULT PRODUCTION PLAN</md-button>
+      <md-button class="actionButton" ng-click="submitProductionPlan()" ng-disabled="isReadOnly" style="">SAVE</md-button>
+      <md-button class="actionButton" ng-click="cancelProductionPlan()" style="">CANCEL</md-button>
+       
+    </md-dialog-actions>
+    </div>
+
+</form>
+</div>
+</div>
+ -->
+<div ng-controller="productionPlanCtrl" class="erp-information" ng-init="getProductionPlanList()">
+	<div class="md-toolbar-tools">
+	<h1>Production Plan</h1>
+	</div>
+	
+	<div ui-grid="gridOptions" class="grid" ui-grid-pinning ui-grid-edit ui-grid-cellnav></div>
+	<div style="margin-top: 2%;margin-left: 40%;">
+  <md-dialog-actions layout="row">
+      
+      <md-button class="actionButton" ng-click="createDefaultProductionPlan()" style="">CREATE DEFAULT PRODUCTION PLAN</md-button>
+      <md-button class="actionButton" ng-click="submitProductionPlan()" ng-disabled="isReadOnly" style="">SAVE</md-button>
+      <md-button class="actionButton" ng-click="cancelProductionPlan()" style="">CANCEL</md-button>
+       
+    </md-dialog-actions>
+    </div>
+	
+</div>

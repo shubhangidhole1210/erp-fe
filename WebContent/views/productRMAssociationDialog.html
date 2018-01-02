@@ -1,0 +1,148 @@
+<md-dialog aria-label="" class="statusInfo">
+<form name="productRMAssociationInformation" novalidate>
+	<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>{{information}}</h2>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="cancel()"> <md-icon>&#10006;</md-icon>
+		</md-button>
+	</div>
+	</md-toolbar>
+
+	<md-dialog-content>
+	<div class="md-dialog-content">
+
+		<div layout-gt-sm="row">
+			<md-input-container class="drop-down"> <label>Product*</label>
+			<md-select ng-model="productRmAsso.product" name="product"
+				ng-disabled="isReadOnly" required ng-init="getProducts()">
+			<md-option ng-repeat="product in products" ng-value="product.id">
+			{{product.partNumber}} </md-option> </md-select>
+			<div ng-messages="productRMAssociationInformation.product.$error">
+				<div ng-message="required">Please Select Product</div>
+			</div>
+			</md-input-container>
+		</div>
+		<!-- <div layout-gt-sm="row">
+			<md-input-container class="drop-down"> <label>RM
+				TYPE</label> <md-select ng-model="RMTypeId.id" name="rmType"
+				value="unitID.id" ng-disabled="isReadOnly" ng-init="getRmTypeList()"
+				ng-change="getRawMtaerialByRmType($index)" ng-required="true">
+			<md-option ng-repeat="rMType in rmTypeList" ng-value="rMType.id">
+			{{rMType.rmTypeName}} </md-option> </md-select>
+			<div ng-messages="rawMaterialInformation.rmType.$error">
+				<div ng-message="required">Please Select RM Type</div>
+			</div>
+			</md-input-container>
+		</div> -->
+
+		<h2>Raw Material List</h2>
+		<table>
+			<tr>
+				<th>RAW MATERIAL</th>
+				<th>QUANTITY</th>
+				<th>ACTION</th>
+			</tr>
+
+			<tr ng-repeat="rm in productRmAsso.productRMAssociationModelParts">
+				<td>{{rm.rawmaterial.partNumber}}</td>
+				<td><input type="number" ng-value="{{rm.quantity}}"
+					ng-model="rm.quantity" ng-change="updateQuantity(rm.quantity)"
+					name="quantity1{{$index}}" min="1">
+					<div
+						ng-show="productRMAssociationInformation.quantity1{{$index}}.$error.min"
+						class="error-msg">Quantity should be greater then 0</div></td>
+				<td>
+					<button type="button" class="multiple-added-delete"
+						ng-click="deleteRawMaterial($index)" ng-disabled="isReadOnly">Delete</button>
+				</td>
+			</tr>
+		</table>
+		<div layout-gt-sm="row">
+
+
+			<!-- <div class="drop-down-ui">
+			  <md-autocomplete 
+                     ng-disabled="isDisabled"
+                    md-selected-item="rawmaterialPart.rawmaterial"
+                     md-search-text="searchText"
+                      md-items="item in rawMtaerials | filter:searchText"
+                       md-item-text="item.partNumber"
+                        ng-init="rawMaterialId()" 
+                        placeholder="Search Raw material" 
+                         md-no-cache="noCache"
+                         md-selected-item-change="getPrice()"
+                         name="rawmaterial"> 
+    <md-item-template>
+          <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.partNumber}}</span>
+        </md-item-template>
+    <md-not-found>
+          No Products matching "{{searchText}}" were found.
+          <a ng-click="newState(searchText)">Create a new one!</a>
+        </md-not-found>
+  </md-autocomplete>      
+			</div> -->
+			<div layout-gt-sm="row">
+				<md-input-container class="drop-down"> 
+					<label>RM TYPE</label> 
+					<md-select 	ng-model="RMTypeId.id" name="rmType" value="unitID.id" ng-disabled="isReadOnly" ng-init="getRmTypeList()"
+								ng-change="getRawMtaerialByRmType($index)" ng-required="true">
+								
+								<md-option ng-repeat="rMType in rmTypeList" ng-value="rMType.id"> {{rMType.rmTypeName}} </md-option> 
+					</md-select>
+					
+					<div ng-messages="rawMaterialInformation.rmType.$error">
+						<div ng-message="required">Please Select RM Type</div>
+					</div>
+					
+			</md-input-container>
+			
+				<md-input-container> <label>Raw
+					Material</label> <md-select ng-model="rawmaterialPart.rawmaterial"
+					name="rawMaterial" ng-init="rawMaterialId()" ng-change="getPrice()"
+					ng-disabled="!(RMTypeId.id)"> <md-option
+					ng-repeat="rawmaterial in rawMtaerials" ng-value="rawmaterial">{{rawmaterial.partNumber}}
+				</md-option> </md-select>
+				<div ng-messages="securityInformation.rawMaterial.$error">
+					<div ng-message="required">Please Select Product</div>
+				</div>
+				<p ng-show="productOrderMsg" class="ui-msg">Please select Client
+					first</p>
+				<p ng-show="OrderCreationMsg" class="ui-msg">Please create
+					product order for selected client</p>
+				</md-input-container>
+			</div>
+			<div style="width: 32%">
+				<md-input-container class="md-block" flex-gt-sm>
+				<label class="input-filed-label">QUANTITY</label> <input
+					type="number" ng-model="rawmaterialPart.quantity" name="quantity"
+					ng-disabled="isReadOnly"
+					ng-change="validateAddedQuantity(rawmaterialPart.quantity)" min="1"
+					onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+				<div ng-messages="productRMAssociationInformation.quantity.$error">
+					<!--  <div ng-message="min">Quantity should be greater then 0</div> -->
+				</div>
+				<div ng-show="productRMAssociationInformation.quantity.$error.min"
+					class="error-msg">Quantity should be greater then 0</div>
+				</md-input-container>
+			</div>
+			<button type="button" class="added-multiple"
+				ng-click="addRawMaterial()"
+				ng-disabled="!(rawmaterialPart.rawmaterial && rawmaterialPart.quantity)">Add
+				Raw Material</button>
+		</div>
+	</div>
+	</md-dialog-content>
+	<md-dialog-actions layout="row"> <md-button
+		class="md-raised"
+		ng-click="submitProductRMAssociationInformation(productRMAssociationInformation.$valid || !productRMAssociationInformation.$touched,$event)"
+		type="submit" ng-disabled="productRMAssociationInformation.$invalid && productRMAssociationInformation.$touched"
+		ng-show="isSaveButtonHide">SAVE</md-button> <md-button
+		class="md-raised" ng-click="answer('not useful')">CANCEL</md-button> </md-dialog-actions>
+
+
+</form>
+</md-dialog>
+
+
+

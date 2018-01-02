@@ -1,0 +1,103 @@
+ <md-dialog class="dialogueInfo" ng-show="isDialogBoxvisible">
+  <form name="bomGenerateForm" novalidate>
+  
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{bomInformation}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" >
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content >
+      <div class="md-dialog-content">
+		<div layout-gt-sm="row">
+			<md-input-container> <label>PART NUMNBER
+			</label> <md-select ng-model="product.product.id" name=""
+				ng-disabled="isVendorId" name="vendorId"
+				required ng-change="getRawMaterials()" ng-init="abc()">
+			<md-option ng-repeat="product in products" ng-value="product.product.id">
+			{{product.product.partNumber}} </md-option> </md-select> 
+			 <div ng-messages="RMOrderInformation.vendorId.$error">
+				<div ng-message="required">Please select Vendor</div>
+			</div>
+			</md-input-container>
+		</div>       
+      <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+             <label class="input-filed-label">BOM ID</label> <input type="text"
+				ng-model="bomId" name="bomId" ng-disabled="isReadOnly" required>
+				 <div ng-messages="bomGenerateForm.bomId.$error">
+                 <div ng-message="required">Please enter BOM Id</div>
+              </div>
+          </md-input-container>
+        </div>
+       
+    <table>
+              <tr>
+               <th>RAW MATERIAL</th>
+               <th>VENDOR</th>
+               <th>QUANTITY</th>
+               <th>PRICE</th>
+              </tr>
+              <tr ng-repeat="rmVendor in rawMaterialVendorList">
+                 <td >
+            <md-input-container class="drop-down">
+          <label>Raw Material</label>
+          <md-select ng-model="rawmaterial.id" name="product"  ng-disabled="productIdReadOnly" ng-change="getVenodrList()">
+            <md-option ng-repeat="rawMaterials in data.data" ng-value="rawMaterials.rawmaterial.id">
+            {{rawMaterials.rawmaterial.partNumber}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+                 </td>
+                 <td>
+                     <md-input-container class="drop-down">
+          <label>VENODR</label>
+          <md-select ng-model="rmVendor.vendor.id" name="product"  ng-disabled="productIdReadOnly">
+            <md-option ng-repeat="vendor in vendorList" ng-value="vendor.vendor.id">
+            {{vendor.vendor.companyName}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+                 </td>
+                 <td>
+                    <md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">QUANTITY</label> <input
+				type="number" ng-model="rmVendor.quantity1" name="quantity" ng-change="caluculatePrice(rmVendor.quantity1,$index)" min="1">
+			</md-input-container>
+                 </td>
+                  <div ng-messages="bomGenerateForm.quantity.$error">
+			         <div ng-message="min" class="error-msg">Price should be greater than 0</div>
+			      </div>
+                 <td>
+                <md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">Price</label> <input
+				type="number" ng-model="rmVendor.pricePerUnit" name="pricePerUnit" value="{{pricePerUnit}}" >
+			</md-input-container>
+                 </td>
+              </tr>
+           </table>
+       
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      
+      <md-button class="md-raised" ng-click="submitBomInformation(bomGenerateForm.$valid,$event)" style="background: rgba(63, 81, 181, 0.59);color: white;" ng-disabled="isReadOnly" type="submit">SAVE</md-button>
+      <md-button class="md-raised" ng-click="cancel()" style="background: rgba(63, 81, 181, 0.59);color: white;">CANCEL</md-button>
+    </md-dialog-actions>
+    
+  </form>
+</md-dialog>
+
+
+
+
+
+
+ 
+ 
+ 
+ 

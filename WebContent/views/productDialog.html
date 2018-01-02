@@ -1,0 +1,169 @@
+<md-dialog id="parentDialog" class="dialogueInfo erp-dialog">
+<form name="productInformation" novalidate>
+
+	<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>{{dialogueTitle}}</h2>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="cancel()"> <md-icon>&#10006;</md-icon>
+		</md-button>
+	</div>
+	</md-toolbar>
+
+	<md-dialog-content>
+	<div class="md-dialog-content">
+
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">NAME</label> <input type="text"
+				ng-model="product.name" value="name" required name="name"
+				ng-minlength="2" ng-disabled="isReadOnly" limit-to="255" ng-maxlength="255">
+			<div ng-messages="productInformation.name.$error">
+				<div ng-message="required">Please enter Product Name</div>
+				<div ng-message="minlength">Product Name should be minimum 2
+					character</div>
+				<div ng-message="maxlength">Product Name should be maximum 255
+					character</div>	
+			</div>
+			</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">PART NUMBER</label> <input
+				type="text" ng-model="product.partNumber" value="product.partNumber"
+				required name="partNumber" ng-disabled="isReadOnly" ng-minlength="2" limit-to="255">
+			<div ng-messages="productInformation.partNumber.$error">
+				<div ng-message="required">Please enter Product Part Number</div>
+				<div ng-message="minlength">Part Number should be minimum 2 character</div>
+			</div>
+			</md-input-container>
+		</div>
+		
+		<div layout-gt-sm="row">
+
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">CLIENT PART NUMBER*</label> <input
+				type="text" ng-model="product.clientPartNumber"
+				value="product.clientPartNumber" required name="clientpartnumber"
+				ng-disabled="isReadOnly" ng-minlength="2" ng-maxlength="255" limit-to="255">
+			<div ng-messages="productInformation.clientpartnumber.$error">
+				<div ng-message="required">Please enter Client Part Number</div>
+				<div ng-message="minlength">Part Number should be minimum 2 character</div>
+				<div ng-message="maxlength">Part Number should be maximum 255 character</div>
+			</div>
+			</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">DESCRIPTION</label> <input
+				type="text" ng-model="product.description"
+				value="product.description" required name="description"
+				ng-minlength="4" ng-maxlength="255" ng-disabled="isReadOnly" limit-to="255">
+			<div ng-messages="productInformation.description.$error">
+				<div ng-message="required">Please enter Description</div>
+				<div ng-message="minlength">Product Description Should be
+					minimum 4 or maximum 255 character</div>
+				<div ng-message = "maxlength">Product Description should be minimum 4 or maximum 255 character</div>	
+			</div>
+			</md-input-container>
+		</div>
+		   <div layout-gt-sm="row">
+		   <md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">Central GST(CGST)</label> <input type="number"
+				ng-model="product.taxStructureDTO.cgst" value="product.taxStructureDTO.cgst" name="cgst"
+				ng-disabled="isReadOnly" required min="0" onkeypress='return event.charCode >= 46 && event.charCode <= 57'>
+				<div ng-messages="productInformation.cgst.$error">
+			      <div ng-message="required">Please enter central GST tax</div>
+			        <div ng-message="min">Invalid tax!! Tax should be 0% or more than 0%</div>
+		        </div>
+			</md-input-container>
+			
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">State GST(SGST)</label> <input
+				type="number" ng-model="product.taxStructureDTO.sgst"
+				value="product.taxStructureDTO.sgst"  name="sgst"
+				ng-disabled="isReadOnly" required min="0" onkeypress='return event.charCode >= 46 && event.charCode <= 57'>
+				<div ng-messages="productInformation.sgst.$error">
+			   <div ng-message="required">Please enter State GST tax</div>
+			     <div ng-message="min">Invalid tax!! Tax should be 0% or more than 0%</div>
+		    </div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+		   <md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">Integrated GST(IGST)</label> <input type="number"
+				ng-model="product.taxStructureDTO.igst"  name="igst"
+				ng-disabled="isReadOnly" required min="0" onkeypress='return event.charCode >= 46 && event.charCode <= 57'>
+				 <div ng-messages="productInformation.igst.$error">
+					<div ng-message="required">Please enter Integrated GST tax</div>
+					  <div ng-message="min">Invalid tax!! Tax should be 0% or more than 0%</div>
+				</div>
+			</md-input-container>
+			
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">Other one</label> <input
+				type="number" ng-model="product.taxStructureDTO.other1"
+				value="product.other1"  name="otherTaxOne"
+				ng-disabled="isReadOnly" required min="0" onkeypress='return event.charCode >= 46 && event.charCode <= 57'>
+				<div ng-messages="productInformation.otherTaxOne.$error">
+			      <div ng-message="required">Please enter other tax</div>
+			        <div ng-message="min">Invalid tax!! Tax should be 0% or more than 0%</div>
+		      	</div>
+			</md-input-container>
+		</div>
+		<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">Other Two</label> <input
+				type="number" ng-model="product.taxStructureDTO.other2"
+				value="product.other2"  name="otherTaxTwo"
+				ng-disabled="isReadOnly" required min="0" onkeypress='return event.charCode >= 46 && event.charCode <= 57'>
+				<div ng-messages="productInformation.otherTaxTwo.$error">
+			      <div ng-message="required">Please enter other tax</div>
+			        <div ng-message="min">Invalid tax!! Tax should be 0% or more than 0%</div>
+		      	</div>
+			</md-input-container>
+			
+			
+			<div layout-gt-sm="row">
+		   <md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">Bag Size</label> <input type="number"
+				ng-model="product.bagSize"  name="bagSize"
+				ng-disabled="isReadOnly" required >
+				 <div ng-messages="productInformation.bagSize.$error">
+					<div ng-message="required">Please enter Bag size</div>
+				</div>
+			</md-input-container>
+			
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">Box Size</label> <input
+				type="number" ng-model="product.boxSize" name="boxSize"
+				ng-disabled="isReadOnly" required  >
+				<div ng-messages="productInformation.boxSize.$error">
+			      <div ng-message="required">Please enter Box size</div>
+		      	</div>
+			</md-input-container>
+		</div>
+		
+			<md-radio-group ng-model="sendOption" ng-change="onSendOptionChanged()" class="md-primary">
+
+      <md-radio-button value="isBag" >Bag</md-radio-button>
+      <md-radio-button value="isBox"> Box </md-radio-button>
+
+    </md-radio-group>
+	
+		 <input type="file" id="file1" name="file" multiple
+            ng-files="getTheFiles($files)" ng-disabled="isReadOnly" ng-model="file"/>
+		</div>
+		
+	</md-dialog-content>
+      
+	<md-dialog-actions layout="row"> <md-button
+		class="md-raised"
+		ng-click="saveProduct(product.name,product.partNumber,product.clientPartNumber,product.description,product.cgst,product.sgst,product.igst,product.other1,product.other2,product.bagSize,product.boxSize,sendOption)"
+		type="submit" ng-disabled="productInformation.$pristine" ng-show="isSaveButtonHide">SAVE</md-button> <md-button
+		class="md-raised" ng-click="answer('not useful')">CANCEL</md-button>
+	</md-dialog-actions>
+
+</form>
+</md-dialog>
+
+
+
+
+
+

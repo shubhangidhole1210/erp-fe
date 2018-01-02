@@ -1,0 +1,85 @@
+<div ng-controller="rmOrderCtrl">
+
+   <div class="erp-information">
+        <div id="top">
+			<md-button class="md-raised md-primary add-new-btn" ng-click="addNewRMOrder($event);"  ng-init="populateRMOrderList();flag=0">Add New
+			RM Order</md-button>
+		</div>
+		 <md-input-container class="md-block" flex-gt-sm type="password" style="margin-left:2%">
+			<input type="text"  ng-model="searchText" name="password" placeholder="Search by Raw Material Order Name" class="search-text">
+			</md-input-container>
+		
+		<div ng-show="isRMOrderListEmpty()" class="no-data-message">
+		    <i class="material-icons">report_problem</i> Currently there are no active Raw material Order.Please add new Raw material Order.
+		</div>
+			<div class="scroll-rm-list">
+  <div class="">
+  <table id="tableHeader">
+			<tr >
+			     <th>No</th>
+				<th>Name</th>
+				<!-- <th>Tax</th> -->
+				<th>Vendor</th>
+				<th>Status</th>
+				<th>Delivery Date</th>
+				<!-- <th>Total Price</th>
+				<th>Actual Price</th> -->
+				<th>Action</th>
+			</tr>
+			<tr ng-repeat="rmOrders in rmOrders | filter:{name:searchText} | startFrom:currentPage*pageSize | limitTo:pageSize ">
+				<!-- <td>{{number}}</td> -->
+				<td>{{(currentPage*pageSize) + ($index+1) }}</td>
+				<td>{{rmOrders.name}}</td>
+				<!-- <td >{{rmOrders.tax}}</td> -->
+				<td>{{rmOrders.vendorId.companyName}}</td>
+				<td >{{rmOrders.statusId.name }}</td>
+				<td>{{rmOrders.expectedDeliveryDate}}</td>
+				<!-- <td>{{rmOrders.totalPrice}}</td>
+				<td>{{rmOrders.actualPrice}}</td> -->
+				<td>
+				<!--  <md-button class="md-fab" aria-label="Photos">
+            <md-tooltip md-visible="demo.showTooltip">Photos</md-tooltip>
+            <md-icon md-svg-src="img/icons/ic_photo_24px.svg"></md-icon>
+          </md-button> -->
+				<div class="lock-size" layout="row" layout-align="center center">
+					<md-fab-speed-dial md-open="isOpen" md-direction="{{selectedDirection}}" ng-class="selectedMode" >
+        				<md-fab-trigger>
+					          <md-button class="md-fab" style="background-color: #106CC8;">
+					            <i class="material-icons">more_vert</i>
+					          </md-button>
+        				</md-fab-trigger>
+
+				        <md-fab-actions>
+				          <md-button class="md-fab md-raised md-mini actionButton" ng-click="viewRmOrderInformation($event,$index)">
+				            <i class="material-icons">launch</i>
+				            <md-tooltip>View</md-tooltip>
+				          </md-button>
+				          <md-button class="md-fab md-raised md-mini actionButton"  ng-click="editRMOrderInformation($event,$index)" 
+								ng-init="flag=1"  >
+				            <i class="material-icons">mode_edit</i>
+				             <md-tooltip>Edit</md-tooltip>
+				          </md-button>
+				          <md-button class="md-fab md-raised md-mini actionButton"  ng-click="showConfirm($event,$index)">
+				            <i class="material-icons">delete</i>
+				             <md-tooltip >Delete</md-tooltip>
+				          </md-button>
+				        </md-fab-actions>
+      				</md-fab-speed-dial>	
+				</div>
+				
+				
+				</td>
+			</tr>
+		</table>
+		
+		  <md-dialog-actions layout="row" style="" class="paginationBtn" ng-show="isHidePaginationBtn"> <md-button
+		class="md-raised"
+		type="button" ng-disabled="currentPage == 0" ng-click="gotoPrevPage()">Previous Page</md-button> <md-button
+		class="md-raised" ng-disabled="currentPage >= rmOrders.length/pageSize - 1" ng-click="gotoNextPage()">Next Page</md-button>
+	</md-dialog-actions>
+	<!-- <div class="total-pages">Total no of pages {{currentPage+1}} / {{totalNoOfPages()}}</div> -->
+	</div>
+	</div>
+		
+   </div>
+</div>

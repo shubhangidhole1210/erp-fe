@@ -1,0 +1,104 @@
+<div ng-controller="rawMaterialCtrl">
+	<div class="erp-information">
+	     <!-- <img src="http://192.168.2.100:8086/RESTfulExample/image/get" alt="Mountain View" style="width:304px;height:228px;"> -->
+		<div>
+			<md-button class="md-raised md-primary add-new-btn"
+				ng-click="addRawMaterial($event);"
+				ng-init="populateRawMaterials();flag=0;">ADD RAW MATERIAL
+			INFORMATION</md-button>
+		</div>
+		<md-input-container class="md-block" flex-gt-sm type="password" style="margin-left:2%">
+		<input type="text" ng-model="searchtext" name="password"
+			placeholder="Search by Raw Material Name" class="search-text">
+		</md-input-container>
+		<h1 class="table-header">RAW MATERIAL LIST</h1>
+		<!-- <div class="total-pages">Current page is {{currentPage+1}} of {{totalNoOfPages()}}</div> -->
+		
+				 <table ng-init="search()">
+          <thead>
+            <tr>
+                <!--  <th>NO</th> -->
+				<th>NAME</th>
+				<th>DESCRIPTION</th>
+				<th>PART NUMBER</th>
+				<th>Price</th>
+				<th>SHOW IMAGE</th>
+				<th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr ng-repeat="rawMaterials in rawMaterialList | filter: searchtext " >
+				 <!-- <td>{{(criteria.page*) + ($index+1)}}</td> -->
+				<td>{{rawMaterials.rmName}}</td>
+				<td>{{rawMaterials.description}}</td>
+				<td>{{rawMaterials.partNumber}}</td>
+				<td>{{rawMaterials.pricePerUnit}}</td>
+				<td><md-button class="actionButton"
+						ng-click="getImage($index)" ng-init="flag=1" style="">View Image</md-button></td>
+				<td>
+				 <div class="lock-size" layout="row" layout-align="center center">
+					<md-fab-speed-dial md-open="isOpen" md-direction="{{selectedDirection}}" ng-class="selectedMode" >
+        				<md-fab-trigger>
+					          <md-button class="md-fab" style="padding-top: 7px;background-color: #106CC8;">
+					            <i class="material-icons">more_vert</i>
+					          </md-button>
+        				</md-fab-trigger>
+				        <md-fab-actions>
+				          <md-button class="md-fab md-raised md-mini actionButton" ng-click="viewRMInformation($event,$index)" >
+				            <i class="material-icons">launch</i>
+				            <md-tooltip>View</md-tooltip>
+				          </md-button>
+				          <md-button class="md-fab md-raised md-mini actionButton"  ng-click="editRMInformation($event,$index)" 
+								ng-init="flag=1"  >
+				            <i class="material-icons">mode_edit</i>
+				            <md-tooltip>Edit</md-tooltip>
+				          </md-button>
+				          <md-button class="md-fab md-raised md-mini actionButton"   ng-click="showConfirm($event,$index)">
+				            <i class="material-icons">delete</i>
+				            <md-tooltip>Delete</md-tooltip>
+				          </md-button>
+				        </md-fab-actions>
+      				</md-fab-speed-dial>	
+				</div>
+				
+			</tr>
+          </tbody>
+        </table>
+		
+		   <md-dialog-actions layout="row"  class="paginationBtn" ng-show="isPaginationBtnHide"> <md-button
+		class="md-raised"
+		type="button" ng-disabled="currentPage == 0" ng-click="gotoPrevPage()">Previous Page</md-button> <md-button
+		class="md-raised" ng-disabled="(currentPage + 1) == totalNoOfPages()" ng-click="gotoNextPage()">Next Page</md-button>
+	</md-dialog-actions>
+	
+	  <!-- <md-dialog-actions layout="row"  class="paginationBtn" > <md-button
+		class="md-raised"
+		type="button" ng-click="gotoPrevPage()" ng-disabled="criteria.page == 1">Previous Page</md-button> 
+		  <input type="number" ng-model='criteria.page'>
+		<md-button
+		class="md-raised" ng-click="gotoNextPage()" ng-disabled="isNextButtonDisabled">Next Page</md-button>
+	</md-dialog-actions> -->
+		
+	   <!-- <div class="total-pages">Total no of pages {{criteria.page}} / {{paging.totalpages}}</div> -->
+		<div ng-show="isRmPresent" class="active-information">Currently there are no Raw
+			materials.Please add new Raw material.</div>
+	</div>
+		<div id="guideLinePopUp" style="padding-top: 150px" ng-show="isImagePopUp">
+
+<div class="popup-container">
+<div class="pop-up-info">
+	<div class="header">Image</div>
+			<div class="active-information" style="margin-left: 20px" ng-show="isRMImagePresent">There is no Image for this Raw Material</div>
+            <imd ng-src="{{imgData}}">
+           
+      <div class="cancel-btn"> 
+      <md-button class="md-raised" ng-click="cancelGuideLinePopUp()">CANCEL</md-button>
+</div>
+</div>
+</div>
+</div>
+	
+</div>
+
+
+

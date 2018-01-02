@@ -1,0 +1,41 @@
+<div ng-controller="reportCtrl" class="erp-information"	>
+	<div class="erp-security">
+<div class="qualitycheck">
+   	<div class="header">Generate Report</div>
+ <div class="qualityInspection">
+	
+	<div >
+		<div>
+			<md-input-container style="width:100%"> <label>REPORT </label> 
+				<md-select ng-model="selectedReport"
+						name="report" value="report" ng-disabled="isReadOnly"
+						ng-init="setreports();" 
+						ng-change="fetchReportData()" required> 
+						<md-option ng-repeat="report in reports" ng-value="report">{{report.report_Name}} 
+						</md-option> 
+				</md-select>
+			</md-input-container>
+		</div>
+	</div>
+	
+	<div class="erp-information">
+		<div ng-repeat="input in data">
+			 <md-input-container style="margin-right: 10px;">
+				<label>{{input.displayName}}</label>
+				<input ng-if="input.inputType === 'DATE' || input.inputType === 'TEXT'" ng-model="input.value" type="{{input.inputType}}" placeholder="{{input.displayName">
+				<md-select ng-if="input.inputType === 'LIST'"
+							ng-model="input.value"
+							name="report" value="item.id"
+							aria-label="{{input.displayName}}" required> 
+							<md-option ng-repeat="item in input.data" ng-value="item.id">{{item.name}} 
+							</md-option> 
+				</md-select>
+			</md-input-container>
+		</div>
+		<md-button class="actionButton " ng-click="submitReportQuery()" type="submit" ng-disabled="isReadOnly" >SUBMIT</md-button>
+		<md-button class="actionButton " ng-click="cancelReportForm()" type="submit" ng-disabled="isReadOnly" >CANCEL</md-button>
+	</div>	
+	</div>
+	</div>
+	</div>
+</div>

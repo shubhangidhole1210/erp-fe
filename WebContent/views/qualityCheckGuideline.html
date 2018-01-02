@@ -1,0 +1,59 @@
+<div ng-controller="qualityChcekGuidelineCtrl">
+<div class="erp-information">
+    <div>
+			<md-button class="md-raised md-primary add-new-btn" ng-click="addGuideLine($event);"  ng-init="populateGuideLineList();flag=0" style="">Create NEW Guideline </md-button>
+		</div>
+		 <md-input-container class="md-block" flex-gt-sm type="password" style="margin-left:2%">
+			<input type="text"  ng-model="searchText"  name="password"  class="search-text">
+			</md-input-container>
+			<div class="scroll-rm-list">
+     <h1 class="table-header">GUIDELINE LIST</h1>
+  <table>
+			<tr>
+				<th>NO</th>
+				<th>ID</th>
+				<th>GUIDE LINE</th>
+				<th>ACTION</th>
+			</tr>
+			<tr ng-repeat="qualityGuideline in QualityCheckGuideline |startFrom:currentPage*pageSize | limitTo:pageSize |  filter:{ name: searchText } " >
+				<td>{{$index+1}}</td>
+				<td >{{qualityGuideline.id}}</td>
+				<td>{{qualityGuideline.guidelines}}</td>
+				<td style="text-align: center;">
+				 <div class="lock-size" layout="row" layout-align="center center">
+					<md-fab-speed-dial md-open="isOpen" md-direction="{{selectedDirection}}" ng-class="selectedMode" >
+        				<md-fab-trigger>
+					          <md-button class="md-fab" style="background-color: #106CC8;">
+					            <i class="material-icons">more_vert</i>
+					          </md-button>
+        				</md-fab-trigger>
+
+				        <md-fab-actions>
+				          <md-button class="md-fab md-raised md-mini actionButton" ng-click="viewGuideLineInformation($event,$index)" >
+				            <i class="material-icons">launch</i>
+				          </md-button>
+				          <md-button class="md-fab md-raised md-mini actionButton"  ng-click="editGuideLineInformation($event,$index)" 
+								ng-init="flag=1"  >
+				            <i class="material-icons">mode_edit</i>
+				          </md-button>
+				          <md-button class="md-fab md-raised md-mini actionButton"   ng-click="showConfirm($event,$index)">
+				            <i class="material-icons">delete</i>
+				          </md-button>
+				        </md-fab-actions>
+      				</md-fab-speed-dial>	
+				</div>
+				
+				</td>
+			</tr>
+		</table>
+		  <md-dialog-actions layout="row" style="" class="paginationBtn"> <md-button
+		class="md-raised"
+		type="button" ng-disabled="currentPage == 0" ng-click="gotoPrevPage()">Previous Page</md-button> <md-button
+		class="md-raised" ng-disabled="currentPage >= QualityCheckGuidelineList.length/pageSize - 1" ng-click="gotoNextPage()">Next Page</md-button>
+	</md-dialog-actions>
+	</div>
+		<div ng-show="isUnitInPresent" class="active-information">
+		   Currently there are no active Units.Please add new unit.
+		</div>
+</div>
+</div>

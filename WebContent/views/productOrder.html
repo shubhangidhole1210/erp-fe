@@ -1,0 +1,86 @@
+<div ng-controller="productOrderCtrl">
+<div class="erp-information">
+<div>
+    <md-button class="md-raised md-primary add-new-btn" ng-click="dddNewProductOrder($event);" ng-init="populateProductOrderList();flag=0">ADD
+			NEW PRODUCT ORDER</md-button>
+</div>
+ <div layout-gt-sm="row">
+			<md-input-container style="width:100%"> <label>Search RM Order
+			</label> <md-select ng-model="status.statusName"name="vendorId"
+				ng-disabled="isVendorId" ng-init="populateStatusList()" name="vendorId"
+				required ng-change="getProductOrderListByStatus()">
+			<md-option ng-repeat="status in statusList" ng-value="status.statusType">
+			{{status.statusName}} </md-option> </md-select> 
+			</md-input-container>
+		</div>
+ <md-input-container class="md-block" flex-gt-sm type="password" style="margin-left:2%">
+			<input type="text"  ng-model="searchText"  name="password" placeholder="Search by Product Order" class="search-text">
+			</md-input-container>
+			<div class="scroll-rm-list">
+			
+			<div class="green-circle"></div>
+			<div class="lable-description">Product Order complete</div>
+			<div class="red-circle"></div>
+			<div  class="lable-description">Product Order incomplete</div>
+  <h1 class="table-header" style="margin-top: 30px;">PRODUCT ORDER LIST</h1>
+   <!-- <div style="float: left;" class="total-pages">Current page is {{currentPage+1}} of {{totalNoOfPages()}}</div> -->
+  <table >
+			<tr>
+				<th>NO</th>
+				<th>CLIENT</th>
+				<!-- <th>DESCRIPTION</th> -->
+				<th>ORDER STATUS</th>
+				<th>DELIVERY DATE</th>
+				<th>ACTION</th>
+			</tr>
+			<tr ng-repeat="productOrder in productOrders |filter:searchText| startFrom:currentPage*pageSize | limitTo:pageSize" >
+				<td ng-class="{'green': productOrder.statusId.name === 'STATUS_PRODUCT_ORDER_COMPLETE' ,'orange': productOrder.statusId.name === 'STATUS_PRODUCT_ORDER_INCOMPLETE' }">{{(currentPage*pageSize) + ($index+1) }}</td>
+				<td ng-class="{'green': productOrder.statusId.name === 'STATUS_PRODUCT_ORDER_COMPLETE' ,'orange': productOrder.statusId.name === 'STATUS_PRODUCT_ORDER_INCOMPLETE'}">{{productOrder.clientId.companyname}}</td>
+				<!-- <td>{{productOrder.description}}</td> -->
+				<td  ng-class="{'green': productOrder.statusId.name === 'STATUS_PRODUCT_ORDER_COMPLETE' ,'orange': productOrder.statusId.name === 'STATUS_PRODUCT_ORDER_INCOMPLETE'}">{{productOrder.statusId.name}}</td>
+				<td ng-class="{'green': productOrder.statusId.name === 'STATUS_PRODUCT_ORDER_COMPLETE' ,'orange': productOrder.statusId.name === 'STATUS_PRODUCT_ORDER_INCOMPLETE'}">{{productOrder.expectedDeliveryDate}}</td>
+				<td>
+				
+				   <div class="lock-size" layout="row" layout-align="center center">
+					<md-fab-speed-dial md-open="isOpen" md-direction="{{selectedDirection}}" ng-class="selectedMode" >
+        				<md-fab-trigger>
+					          <md-button class="md-fab" style="background-color: #106CC8;">
+					            <i class="material-icons">more_vert</i>
+					          </md-button>
+        				</md-fab-trigger>
+
+				        <md-fab-actions>
+				          <md-button class="md-fab md-raised md-mini actionButton" ng-click="viewProductOrderrInformation($event,$index)" style="padding-top: 7px;">
+				            <i class="material-icons">launch</i>
+				            <md-tooltip>View</md-tooltip>
+				          </md-button>
+				          <md-button class="md-fab md-raised md-mini actionButton"  ng-click="editProductOrderInformation($event,$index)" 
+								ng-init="flag=1"  >
+				            <i class="material-icons">mode_edit</i>
+				            <md-tooltip>Edit</md-tooltip>
+				          </md-button>
+				          <md-button class="md-fab md-raised md-mini actionButton" ng-click="showConfirm($event,$index)">
+				            <i class="material-icons">delete</i>
+				            <md-tooltip>Delete</md-tooltip>
+				          </md-button>
+				        </md-fab-actions>
+      				</md-fab-speed-dial>	
+				</div>
+				
+				
+				   
+				</td>
+			</tr>
+		</table>
+		 <md-dialog-actions layout="row" style="" class="paginationBtn" ng-show="isPaginationBtnHide"> <md-button
+		class="md-raised"
+		type="button" ng-disabled="currentPage == 0" ng-click="gotoPrevPage()">Previous Page</md-button> <md-button
+		class="md-raised" ng-disabled="currentPage >= productOrders.length/pageSize - 1" ng-click="gotoNextPage()">Next Page</md-button>
+	</md-dialog-actions>
+	<!-- <div class="total-pages">Total no of pages {{currentPage+1}} / {{totalNoOfPages()}}</div> -->
+	</div>
+		<div ng-show="isProductOrderPresent" class="active-information">
+		    Currently there are no active Product Order.Please add new product Order.
+		</div>
+</div>
+</div>

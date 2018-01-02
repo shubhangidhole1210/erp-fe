@@ -1,0 +1,87 @@
+<div ng-controller="dispatchQuantityCtrl">
+	<div class="erp-security">
+		<div class="qualitycheck">
+			<div class="header">DISPATCH QUANTITY</div>
+			<div class="qualityInspection scroll-security">
+				<form name="dispatchQuantityInformation" novalidate>
+					<div>
+						<div layout-gt-sm="row">
+							<md-input-container class="md-block" flex-gt-sm type="password">
+
+							<label>Product Order </label> <md-select ng-model="order.id"
+								ng-init="populateProductOrderPendingList()" name="productOrder"
+								ng-change="getDispatchquantity($index)" required> <md-option
+								ng-repeat="order in productOrders" ng-value="order.id">
+							{{order.invoiceNo}} </md-option> </md-select>
+							<div
+								ng-messages="dispatchQuantityInformation.productOrder.$error">
+								<div ng-message="required">Please select Product</div>
+							</div>
+							</md-input-container>
+						</div>
+						<div class="ui-msg" ng-show="isproduct">Please create Product Order first</div>
+						<div layout-gt-sm="row">
+							<md-input-container class="md-block" flex-gt-sm>
+							<label class="input-filed-label">INVOICE ID</label> <input
+								type="text" required name="invoiceid" ng-model="invoice">
+							<div ng-messages="dispatchQuantityInformation.invoiceid.$error">
+								<div ng-message="required">Please enter Invoice ID</div>
+							</div>
+							</md-input-container>
+						</div>
+						<div layout-gt-sm="row">
+							<md-input-container class="md-block" flex-gt-sm>
+							<label class="input-filed-label">DESCRIPTION</label> <input
+								type="text" required name="description" ng-model="description" limit-to="255" ng-minlength="4" ng-maxlength="255">
+							<div ng-messages="dispatchQuantityInformation.description.$error">
+								<div ng-message="required">Please enter Description</div>
+								<div ng-message="minlength">Description should be minimum 4 and maximum 255 character</div>
+								<div ng-message="maxlength">Description should be minimum 4 and maximum 255 character</div>
+							</div>
+							</md-input-container>
+						</div>
+						<table class="form-table">
+							<tr class="">
+								<th class="table-info">PART NUMBER</th>
+								<th class="table-info">QUANTITY</th>
+								<th>REMAINING QUANTITY</th>
+							</tr>
+							<tr ng-repeat="orderProduct in orderProductList" >
+								<td class="table-info">{{orderProduct.productId.partNumber}}</td>
+								<td class="table-info">{{orderProduct.quantity}}</td>
+								<td>
+								<md-input-container class="md-block" flex-gt-sm>
+								<input type="number"
+									ng-model="orderProduct.remainingQuantity"
+									max="{{orderProduct.availableQuantity}}"
+									name="quantity{{$index}}" min="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+									
+									<div
+										ng-show="dispatchQuantityInformation.quantity{{$index}}.$error.max"
+										class="error-msg">The value must be in range 0 to
+										{{orderProduct.availableQuantity}}!</div>
+										<div
+										ng-show="dispatchQuantityInformation.quantity{{$index}}.$error.min"
+										class="error-msg">Invalid quantity!! Remaining quantity should be 0 or more then 0</div>
+										</md-input-container>
+										</td>
+										
+							</tr>
+
+						</table>
+						<div class="dispatch-btn">
+							<md-dialog-actions layout="row"> <md-button
+								class="actionButton"
+								ng-click="submitInformation(dispatchQuantityInformation.$valid,$event)"
+								type="submit" ng-disabled="isReadOnly" style="">SAVE</md-button> <md-button
+								class="actionButton" ng-click="cancelDispatchQuantityForm()" style="">CANCEL</md-button>
+							</md-dialog-actions>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+</div>

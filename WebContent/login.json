@@ -1,0 +1,20 @@
+{"loginDetails":[
+{
+      "userName": "admin",
+	   "password": "admin123"
+},
+{
+      "userName": "vendor",
+	   "password": "vendor123"
+},
+{
+      "userName": "product",
+	   "password": "product123"
+},
+ {      
+       "userName": "user",
+	   "password": "user123"
+		
+}
+
+]}

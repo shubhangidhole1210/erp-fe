@@ -1,0 +1,78 @@
+[{
+   "product_id":1234,
+   "production_plan":
+   [
+       {
+          "date": "24-02-2017",
+          "product_quantity": 10
+       },
+        {
+          "date": "25-02-2017",
+          "product_quantity": 20
+       },
+        {
+          "date": "26-02-2017",
+          "product_quantity": 30
+       },
+        {
+          "date": "27-02-2017",
+          "product_quantity":40
+       },
+        {
+          "date":"28-02-2017",
+          "product_quantity":50
+       },
+        {
+          "date":"01-03-2017",
+          "product_quantity":60
+       },
+         "date":"01-03-2017",
+          "product_quantity":60
+       },
+        {
+          "date":"02-03-2017",
+          "product_quantity":70
+       }
+   ]
+
+},
+
+{
+   "product_id":1234,
+   "production_plan":
+   [
+       {
+          "date": "24-02-2017",
+          "product_quantity": 10
+       },
+        {
+          "date": "25-02-2017",
+          "product_quantity": 20
+       },
+        {
+          "date": "26-02-2017",
+          "product_quantity": 30
+       },
+        {
+          "date": "27-02-2017",
+          "product_quantity":40
+       },
+        {
+          "date":"28-02-2017",
+          "product_quantity":50
+       },
+        {
+          "date":"01-03-2017",
+          "product_quantity":60
+       },
+        {
+          "date":"02-03-2017",
+          "product_quantity":70
+       }
+   ]
+
+}
+]
+
+
+

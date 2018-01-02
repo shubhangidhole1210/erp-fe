@@ -1,0 +1,1239 @@
+@CHARSET "ISO-8859-1";
+body{
+	/* background: rgb(230, 230, 230); */
+    overflow-y: hidden; 
+     overflow-x: hidden;
+}
+
+body::-webkit-scrollbar-track, .erp-menubar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+body::-webkit-scrollbar-thumb, .erp-menubar::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  outline: 1px solid #0000ff;
+}
+
+body::-webkit-scrollbar{
+    width: 5px;
+}
+
+.progress-bar{
+	display: flex;
+  	justify-content: center;
+  	align-items: center; 
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.3);;
+	top: 0;
+	left: 0;
+	z-index: 110; 
+}
+
+.grid {
+  width: 100%;
+  height: 400px;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    padding: 15px 5px;
+    text-aling: left;
+}
+
+
+td {
+    text-align: left;
+    padding: 0 5px;
+    font-size: 14px;
+    border: 0.2px solid #0000006b;
+}
+
+tr:nth-child(even) {background: #FFF}
+tr:nth-child(odd) {
+	background: #CCC;
+	text-align: left;
+}
+
+tr:HOVER{
+	background-color: rgba(0, 0, 255, 0.6);;
+	color: white;
+}
+
+.section-erp-header{
+	height: 80px;
+}
+
+.section-content{
+	width: 100%;
+	height: 100%;
+}
+
+.erp-user-name
+{
+	font-weight: bold;
+	font-size: 16px;
+	color: black;
+}
+
+.menu-arrow{
+	margin-left: 10px;
+	margin-right: 5px;
+	position: absolute;
+	right: 0;
+	-webkit-transform: rotate(0deg);
+}
+
+.menu-arrow-rotate{
+	-webkit-transform: rotate(-270deg);
+}
+
+.erp-headder
+{
+	display: flex;
+	background-color:  #106CC8;
+	padding-top: 6px;
+	padding-left: 6px;
+	padding-bottom: 3px;
+	position: fixed;
+    width: 100%;
+    z-index: 60;
+    height: 70px
+}
+
+.action-btn{
+	background: rgba(63, 81, 181, 0.4);
+    color: white;
+}
+
+.fabSpeedDialdemoBasicUsage .text-capitalize {
+  text-transform: capitalize; }
+
+.fabSpeedDialdemoBasicUsage .md-fab:hover, .fabSpeedDialdemoBasicUsage .md-fab.md-focused {
+  background-color: #000 !important;  }
+
+.fabSpeedDialdemoBasicUsage p.note {
+  font-size: 1.2rem; }
+
+.fabSpeedDialdemoBasicUsage .lock-size {
+  min-width: 300px;
+  min-height: 300px;
+  width: 300px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.display-erp-img
+{
+	display: inline-block;
+}
+
+.erp-user-name
+{
+	margin-left: 80%;
+	margin-top: 20px;
+	color: white;
+	font-weight: bold;
+}
+
+.login-user-button
+{
+	margin-top: 20px;
+	padding: 10px;
+	border-radius: 2px;
+}
+
+
+.main-class {
+	display: inline-block;
+	width: 76%;
+	padding-left: 2%;
+	padding-right: 2%;
+	margin-left: 20%;
+	height: 84%;
+   /*  overflow-y: scroll; */
+/* 	background: rgb(230, 230, 230); */
+	position: fixed;
+	
+}
+.main-class-full-screen {
+	display: inline-block;
+	width: 96%;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+.erp-table-row{
+	border: none;
+	border: 1px solid gray;
+}
+.erp-menubar::-webkit-scrollbar{
+    width: 7px;
+}
+.erp-table-column, .erp-table-row td{
+	border: none;
+	border-left: 1px solid gray;
+	border-bottom: 1px solid gray;
+}
+div.erp-menu:ACTIVE{
+	background-color: #267ED5;
+}
+.erp-menubar
+{
+	background-color:  #106CC8;
+	width: 20%;
+	color: white;
+	font-weight: bold;
+	height: 88%;
+	overflow-y: scroll;
+	font-size: 15px;
+	cursor: pointer;
+	float: left;
+    max-height:88%;
+    display: inline-block;
+    position: fixed;
+    overflow-x: hidden;
+}
+.erp-menubar li
+{
+	list-style: none;
+}
+.erp-menubar a
+{
+	color: #FFFFFF;
+	text-decoration: none;
+	width: 100%;
+    height: 100%;
+    display: block;
+    padding-left: 10px
+}
+.erp-menubar a:HOVER{
+	color: white;
+	text-decoration: none;
+	background-color: #267ED5;
+}
+.erp-menu:HOVER
+{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	color: white;
+	font-weight: bold;
+	font-size: 15px;
+	background-color: #267ED5;
+}
+
+.erp-menu
+{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	color: white;
+	font-weight: bold;
+	font-size: 15px;
+	background-color: rgb(25, 138, 234);
+	
+}
+
+.changeERPMenu
+{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	color: white;
+	font-weight: bold;
+	font-size: 15px;
+	background-color: #267ED5;
+}
+.erp-information
+{
+	padding-top: 20px;
+	width: 100%;
+	
+}
+.displayScroll{
+	overflow-y: hidden;
+    overflow-x: scroll;
+}
+.erp-security
+{
+	/* padding-top: 100px; */
+	width: 100%;
+}
+.ng-view-class
+{
+	display: flex;
+}
+.user-name
+{
+	padding-left: 10px;
+}
+.user-list
+{
+	margin-top: 10px;
+	
+}
+.all-user-list
+{
+	margin-top: 2%;
+	padding-left: 10px;
+	display: flex;
+	border-bottom: 1px solid #888;
+	padding-bottom: 10px;
+}
+.user-info
+{
+	width: 60%;
+}
+.input-filed-label
+{
+	color: black;
+	font-size: 14px;
+}
+
+
+
+.erp-vendor
+{
+	padding-left: 17%;
+	padding-top: 10px;
+}
+
+.erp-unit
+{
+	padding-left: 17%;
+	padding-top: 10px;
+}
+.erp-rawmaterial
+{
+	padding-left: 17%;
+	padding-top: 10px;
+}
+.erp-product
+{
+	padding-left: 17%;
+	padding-top: 10px;
+}
+/* body > .md-dialog-container {
+  width: 100vh !important;
+} */
+
+.active-information
+{
+	 background: #fce7e7;
+    border: 1px solid #b00;
+    color: #b00;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 20%;
+    height: 30px;
+    padding: 10px;
+}
+
+.no-data-message
+{
+	 background: #2196F3;
+    /* border: 1px solid #b00; */
+    color: white;
+    font-weight:bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    /* margin-right: 20%; */
+    height: 30px;
+    line-height: 30px;
+    padding: 10px;
+}
+
+.no-data-message i{ 
+	vertical-align: middle;
+}
+
+
+.login-form
+{
+	
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px 50px;
+    overflow: hidden;
+    display: inline-block;
+    height: 100%;
+}
+.qualityCheck-form
+{
+	  width: 400px;
+    margin: 0 auto;
+    padding: 50px 50px;
+    overflow: hidden;
+    display: inline-block;
+    height: 100%;
+    
+}
+.security-Form
+{
+	 width: 400px;
+    margin: 0 auto;
+    padding: 50px 50px;
+    overflow: hidden;
+    display: inline-block;
+    height: 100%;
+}
+.text
+{
+	border-bottom: 1px solid #e0e0e0;
+	width: 300px;
+	padding: 10px;
+    padding-right: 70px;
+    margin-bottom: 10px;
+}
+.password-container{
+	position: relative;
+}
+.forgotLink
+{
+	right: 10px;
+    top: 10px;
+    position: absolute;
+    font-weight: bold;
+    
+	
+}
+.forgot a{
+	color: blue
+}
+.input-error{
+	border: 1px solid red;
+}
+.loginForm
+{
+	padding: 20px;
+}
+.loginClass
+{
+	display: inline-block;
+	vertical-align:top;
+	width: 35%;
+	height: 100%;
+	/* padding-left: 35%; */
+	padding-top: 10%;
+}
+
+.erp-info{
+	display: inline-block;
+	width: 60%;
+	height: 100%;
+	padding-top: 10%;
+	/* background: url("../image/erp_1.png") no-repeat; */
+	
+}
+
+.productQualityCheck
+{
+	padding-top: 10px;
+    padding-left: 40px;
+}
+.product-quality-row
+{
+	padding-top: 18px;
+	font-size: 17px;
+	font-weight: bold;
+}
+.quantity-input
+{
+     width: 80px;
+	}
+	
+.new-production-plan input{
+	pointer-events: none;
+}	
+	
+.search-text
+{
+	width: 250px;
+	height: 25px;
+	/* padding-left: 5px; */
+	position: absolute;
+	right: 20px;
+	margin-top: 16px;
+	padding: 5px;
+}	
+ @media screen and (max-width: 408px) {
+
+  .erp-headder
+{
+	display: flex;
+	background-color:  #106CC8;
+	padding-top: 6px;
+	padding-left: 6px;
+	padding-bottom: 3px;
+	position: fixed;
+    width: 100%;
+    z-index: 60;
+}
+.quantity-input
+{
+     width: 40px;
+	}
+.erp-menubar
+{
+	background-color:  #106CC8;
+	width: 15%;
+	color: white;
+	font-weight: bold;
+	height: 800px;
+	font-size: 15px;
+	cursor: pointer;
+	float: left;
+	/* height: 100%; */
+	max-height: 100%;;
+    padding-top: 100px;
+    display: inline-block;
+}
+.erp-information {
+    padding-left: 5%;
+    padding-top: 100px;
+    width: 100%;
+    margin-left: 20%;
+}
+.login-form
+{
+	
+    width: 260px;
+    margin: 0 auto;
+   padding-top:10px;
+    overflow: hidden;
+    display: inline-block;
+    height: 100%;
+}
+.loginClass
+{
+	padding-left: 1px;
+	padding-top: 20%;
+}
+.qualityCheck-form
+{
+	 width: 260px;
+    margin: 0 auto;
+   padding-top:80px;
+    overflow: hidden;
+    display: inline-block;
+    height: 100%;
+}
+.erp-security
+{
+	padding-left: 1px;
+	/* padding-top: 100px; */
+}
+ }
+ 
+ .scroll-table
+ {
+  overflow-x: scroll;
+ }
+ 
+ .header
+ {
+   
+    background-color: #03A9F4;
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: white;
+    font-size: 21px;
+    font-weight: bold;
+ }
+ .qualitycheck
+ {
+    margin-top: 5%;
+    background: white;
+ }
+ 
+ .qualityInspection
+ {
+   padding: 10px 80px 0;
+    box-shadow: 0 5px 15px #888;
+   background: rgba(128, 128, 128, 0.09);
+   
+ }
+ .table-header
+ {
+    padding: 12px;
+    font-weight: bold;
+    font-size: 21px;
+ }
+ table{
+ 	border-spacing: 0;
+ }
+ 
+ .error-msg
+ {
+   color: red;
+   font-size: 12px;
+ }
+ 
+ .btn-class
+ {
+   margin-top: 5%;
+   margin-left: 70%;
+   padding-bottom: 50px;
+ }
+ .statusInfo
+ {
+   min-width: 1050px;
+   margin-left: 15%;
+   height: 100%;
+ }
+ 
+ .dialogueInfo
+ {
+    min-width: 1050px;
+    margin-left: 15%
+ }
+ 
+ .mainMenu
+ {
+   font-size: 18px;
+   padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 30px;
+	color: white;
+	font-weight: 500;
+    border-bottom: solid 0.1px rgb(121,134,203);
+ }
+ .company-information
+ {
+ }
+ 
+ .erp-btn
+ {
+    color: rgba(255,255,255,0.87);
+   
+ }
+ .display-scroll
+{
+	border: none;
+   /*  overflow-x: hidden;
+    overflow-y: hidden; */
+    width: 100%;
+    display: inline-block;
+}
+
+.todayPlan-save-btn
+{
+	margin-top: 5%;
+	margin-left: 70%;
+	padding-bottom: 20px;
+}
+
+.animate-enter {
+	-webkit-transition: 1s linear all; /* Chrome */
+	transition: 1s linear all;
+	opacity: 0;
+}
+ 
+.animate-enter.animate-enter-active {
+	opacity: 1;
+}
+div.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+div.accordion.active, div.accordion:hover {
+    background-color: #ddd;
+}
+
+div.accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+div.accordion.active:after {
+    content: "\2212";
+}
+
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+.erp-wlcome-label
+{
+	color: rgb(40,53,147);
+	font-weight: bold;
+	font-size: 40px;
+	/* margin-left: 3%; */
+	margin-top: 2%;
+	text-align: center;
+}
+
+.product-store-date{
+	text-align: right;
+	font-weight: bold;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+.add-new-btn{
+	background-color: rgb(126, 137, 213);
+	font-weight: bold;
+	text-transform: none;
+}
+
+.store-info-btn
+{
+	margin-top: 5%; 
+	margin-left: 70%
+}
+
+.dispatch-btn
+{
+	margin-top: 5%;
+	margin-left: 75%;
+	padding-bottom: 20px
+}
+.login-container{
+	display:block;
+	width: 100%;
+}
+.login-name{
+	font-weight: 100;
+	text-align: center;
+}
+
+.drop-down{
+	width:100%
+}
+.multiple-added-delete{
+	height: 40px;
+}
+
+.added-multiple{
+	height: 40px;
+	margin-top: 2%;
+}
+.quality-btn{
+	margin-top: 5%;
+	margin-left: 70%;
+	padding-bottom: 20px;
+}
+.erp-dialog{
+	height:100%;
+}
+.unit-dialogue{
+	min-width: 50%;
+	height: 50%;
+}
+.production-plan-btn{
+	margin-top: 2%;
+	margin-left: 40%;
+}
+
+md-input-container.md-input-invalid .md-auto-hide .md-input-message-animation:not(.ng-animate) {
+  opacity: 1;
+  margin-top: 0;
+}
+
+md-input-container.md-input-invalid [ng-messages] {
+  max-height: 19px;
+}
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    /* border-bottom: 1px dotted black; */
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 150px;
+   /*  background-color: black; */
+    color: blue;
+    /* text-align: center; */
+    /* border-radius: 6px;
+    padding: 5px 0; */
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.button-ui{
+	margin-left: 70%;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+.toast-msg{
+
+	position: fixed;
+}
+
+.paginationclass{
+margin: 15px 28px; 
+ }
+.paginationclass div{
+    border-bottom:1px solid silver;
+    
+}
+.paginationclass span{
+    margin:0px 15px;
+    display:inline-block;
+    padding:5px 0px;
+    text-align:left;
+    width:70px;
+}
+.pagination-controle li{
+    display: inline-block;
+    
+}
+.pagination-controle button{
+    width: 63px;
+    font-size: 12px;
+    margin-left: 13px;
+    cursor:pointer;
+}
+.pagination-div{
+    margin-left:20px;
+}
+
+.cancel{
+	font-size: 20px;
+	width:35px;
+	background: transparent;
+	/* padding-top: 10px;
+	padding-bottom: 10px; */
+	margin-left: 435px;
+	border: none;
+	color: white;
+}
+
+.form-title{
+	font-size: 30px;
+    margin-left: 300px;
+}
+
+.paginationBtn{
+	/* background: rgb(230, 230, 230); */
+	margin-left:30%;
+	margin-top:2%;
+}
+
+.actionButton{
+	background: #106CC8;
+	color: white;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	text-transform: none;
+	font-weight: bold;
+}
+.ui-msg{
+	color: blue;
+	font-size: 15px
+}
+
+.scrollable-div{
+    height: 98%;
+    overflow-y: scroll;
+    float: left;
+    max-height: 98%;
+  
+    position: fixed;
+    overflow-x: hidden;
+}
+.scroll-rm-list{
+    width: 97%;
+    height:82%;
+    overflow-y: scroll;
+    max-height: 82%;
+    position: absolute;
+    overflow-x: hidden;
+}
+
+    .grid {
+      width: 100%;
+      height: 400px;
+    }
+    .ek-name{
+         font-weight: bold;
+     font-size: 25px;
+     text-align: center;
+    }
+    
+    .forget-link-header{
+          background-color: #03A9F4;
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: white;
+    font-size: 21px;
+    font-weight: bold;
+    width: 60%;
+   
+    }
+    
+    .forget-pass-link-info{
+    padding: 10px 80px 0;
+    box-shadow: 0 5px 15px #888;
+     width: 46%;
+     background-color: white;
+    }
+    
+    .foregt-pass-text{
+      text-align: left;
+      padding-top: 20px;
+      padding-bottom: 10px;
+      color: rebeccapurple;
+    }
+
+.forget-password{
+	 margin: 5%;
+    background: rgb(230, 230, 230);
+}
+
+.send-email-btn{
+	padding: 10px;
+	background-color: rgb(63,81,181);
+    color: white;
+    font-size: 18px;
+    border-radius: 2px;
+    border-color: rgb(63,81,181);
+    margin-bottom: 30px;
+    
+}
+
+.forget-link-footer{
+	   background-color: #03A9F4;
+    text-align: left;
+    padding-top: 15px;
+    padding-bottom: 25px;
+    color: white;
+    font-size: 15px;
+    width: 60%;
+    padding-left: 4px;
+    height: 1px;
+     cursor: pointer;
+}
+
+
+.email{
+	text-align: left;
+	padding-top: 35px;
+	padding-bottom: 6px;
+	 color: rebeccapurple;
+}
+
+.input-email{
+	width: 60%;
+	height: 25px;
+    margin-bottom: 15px;
+    padding-left: 15px;
+    font-size: 15px;
+   
+}
+
+.drop-down-ui{
+	margin-top: 2%;
+	width: 44%;
+}
+
+.change-ui{
+	background-color: green;
+}
+
+#popTermsCondition
+{
+	width: 100%;
+   height: 100%;
+   position: absolute;
+  /*  z-index: 700; */
+   bottom: 0;
+   padding: 10px;
+  
+}
+
+.TermsAndCondition-container
+{
+	width: 100%;
+    height: 80%;
+    text-align: center;
+    max-height: 500px;
+     
+}
+
+.TermsAndCondition-form
+{
+	background: white;
+    width: 400px;
+    margin: 0 auto;
+    padding-top:10px;
+    padding-left:15px;
+    overflow: hidden;
+    display: inline-block;
+    height: 29%;
+    margin-top:20%;
+   
+      box-shadow: 0 4px 16px 0 rgba(0,0,0,.2);
+}
+
+.green{
+	color: green;
+	font-weight: bold;
+}
+
+
+.product-drop-down{
+	width: 35%;
+}
+
+.orange{
+	color: orange;
+	font-weight: bold;
+}
+
+.red{
+	color: red;
+	font-weight: bold;
+}
+
+#guideLinePopUp
+{
+
+   width: 95%;
+   height: 100%;
+   position: absolute;
+   bottom: 0;
+   padding: 10px;
+   background: rgba(16, 12, 12, 0.12);
+    z-index: 700;
+    
+    
+  
+}
+
+.popup-container
+{
+	width: 100%;
+    height: 80%;
+    text-align: center;
+    max-height: 500px;
+     
+}
+.pop-up-info
+{
+	background: white;
+    width: 600px;
+    margin: 0 auto;
+   /*  padding: 50px 50px; */
+    overflow: hidden;
+    display: inline-block;
+    height: 100%;
+    /*   box-shadow: 0 4px 16px 0 rgba(0,0,0,.2); */
+    margin-top: 13%;
+}
+
+.cancel-btn{
+	position: absolute;
+	right: 20%;
+	bottom: 15%
+}
+
+.show-Guideline{
+	padding-top: 15px;
+	padding-left: 15px;
+	font-size: 25px;
+}
+.guideline-information
+{
+	 background: #fce7e7;
+    border: 1px solid #b00;
+    color: #b00;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 20%;
+    height: 30px;
+    padding: 10px;
+    margin-left: 8%;
+}
+.UserIdClass{
+	 background-color: gray;
+	 color: black; 
+}
+
+.md-button.md-fab{
+	line-height: 35px;
+	width: 35px;
+	height: 35px;
+	padding: 6px;
+	margin: 2px;
+}
+
+.user-type-dialoge{
+	width:100%;
+	height:100%;
+	margin-left:18%
+}
+
+.table-header-set{
+	font-weight: bold;
+	background-color: white;
+	text-align: center;	
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-size: 15px;
+	/* padding-right: 47%; */
+	padding-right: 237px;
+	border-bottom: 1px black;
+}
+
+.table {
+            height: 600px;
+        }
+        
+        .nonHeader th {
+          font-weight: normal !important;
+        }
+        
+ .form-table{
+ border: 1px solid black; 
+ border-collapse: collapse;
+ }   
+ 
+ .table-info{
+ border-right:1px solid black;
+ }
+ .form-table-row{
+ border-bottom:1px solid black;
+ }
+ 
+ .downlodPdf-cancel-btn{
+ margin-left:70%;
+ background: rgba(63, 81, 181, 0.59);
+ color: white;
+ }
+ 
+ .scroll-security{
+    width: 79%;
+    height: 100%;
+    overflow-y: scroll;
+    max-height: 88%;
+    position: absolute;
+  /*   overflow-x: hidden; */
+}
+
+.green-circle{
+	float: left;
+	width: 10px;
+	height: 10px;
+	background-color: green;
+	border-radius:50%
+}
+
+.red-circle{
+	float: left;
+	width: 10px;
+	height: 10px;
+	background-color:orange;
+	border-radius:50%;
+	margin-left: 15px
+}
+.lable-description{
+	float: left;
+	padding-left: 15px
+}
+
+.harmBurger-menu{
+	float: right;
+	color: black;
+	font-size: 20px;
+	border: 1px solid #D8D8D8;
+	line-height: 1;
+	padding: 8px 10px;
+	border-radius: 0px;
+	background: #D8D8D8;
+}
+
+.change-harmBurger-menu{
+	float: right;
+	color: white;
+	font-size: 20px;
+	border: 1px solid blue;
+	line-height: 1;
+	padding: 8px 10px;
+	border-radius: 0px;
+	background: blue;
+	
+}
+
+.harmBurger-menu-rotate{
+	-webkit-transform: rotate(-270deg);
+}
+
+@CHARSET "ISO-8859-1";
+
+
+
+.sidebar-menu{
+  background-color:#777;
+  color:white;
+  position:absolute;
+  top:0;
+  left:0;
+  height:100vh;
+}
+
+.sidebar-menu .menu-header{
+  background-color:#444;
+  padding:10px 30px;
+}
+
+.sidebar-menu .fa{
+  margin-left:20px;
+}
+ul{
+  list-style:none;
+}
+li{
+  padding:10px;
+}
+
+
+.menu-closed-add,
+.menu-closed-remove{
+  transition:all 0.15s;
+}
+
+.menu-closed-active,
+.menu-closed{
+  left:-220px
+}
+
+.total-pages{
+	color: blue;
+	margin-bottom: 10px;
+	/* margin-top: 20px; */
+	margin-left: 34%;
+}

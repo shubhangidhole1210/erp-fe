@@ -1,0 +1,78 @@
+<div ng-controller="vedorCtrl">
+	<div class="erp-information">
+		<div>
+			<md-button class="md-raised md-primary add-new-btn"
+				ng-click="addNewVendor($event);"
+				ng-init="populateVendorList();flag=0">ADD NEW VENDOR</md-button>
+		</div>
+		<md-input-container class="md-block" flex-gt-sm type="password">
+		<input type="text" ng-model="searchText" name="password"
+			placeholder="Search by Company Name" class="search-text"> </md-input-container>
+		
+		<div >
+		<h1 class="table-header">VENDOR LIST</h1>
+		<!--  <div  class="total-pages">Current page is {{currentPage+1}} of {{totalNoOfPages()}}</div> -->
+		<table  id="tableHead"  fixed-header class="scroll-rm-list">
+			<thead>
+			<tr>
+				<th>NO</th>
+				<th>COMPANY NAME</th>
+				<th>FIRST NAME</th>
+				<th>LAST NAME</th>
+				<th>MOBILE</th>
+				<th>ACTION</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="data in vendors  |  filter:{ companyName: searchText } | startFrom:currentPage*pageSize | limitTo:pageSize" style="overflow: scroll">
+				<td>{{(currentPage*pageSize) + ($index+1) }}</td>
+				<td>{{data.companyName}}</td>
+				<td>{{data.firstName}}</td>
+				<td>{{data.lastName}}</td>
+				<td>{{data.contactNumberOffice}}</td>
+				<td >
+						<div class="lock-size" layout="row" layout-align="center center">
+					<md-fab-speed-dial md-open="isOpen" md-direction="{{selectedDirection}}" ng-class="selectedMode" >
+        				<md-fab-trigger>
+					          <md-button class="md-fab" style="background-color: #106CC8;">
+					            <i class="material-icons">more_vert</i>
+					          </md-button>
+        				</md-fab-trigger>
+
+				        <md-fab-actions>
+				          <md-button class="md-fab md-raised md-mini actionButton" ng-click="viewVendarInformation($event,$index)">
+				            <i class="material-icons">launch</i>
+				            <md-tooltip >View</md-tooltip>
+				          </md-button>
+				          <md-button class="md-fab md-raised md-mini actionButton" ng-click="editVendorInformation($event,$index)" 
+								ng-init="flag=1"  >
+				            <i class="material-icons">mode_edit</i>
+				            <md-tooltip >Edit</md-tooltip>
+				          </md-button>
+				          <md-button class="md-fab md-raised md-mini actionButton"  ng-click="showConfirm($event,$index)">
+				            <i class="material-icons">delete</i>
+				            <md-tooltip>Delete</md-tooltip>
+				          </md-button>
+				        </md-fab-actions>
+      				</md-fab-speed-dial>	
+				</div>
+						
+						
+						</td>
+			</tr>
+			</tbody>
+		</table>
+		
+		
+		<md-dialog-actions layout="row" style="margin-top: 60%;margin-left:30%" class="paginationBtn" ng-show="isPaginationBtnHide" > <md-button
+		class="md-raised"
+		type="button" ng-disabled="currentPage == 0" ng-click="gotoPrevPage()">Previous Page</md-button> <md-button
+		class="md-raised" ng-disabled="(currentPage + 1) == totalNoOfPages()" ng-click="gotoNextPage()">Next Page</md-button>
+	</md-dialog-actions>
+	<div ng-show="isVendorPresent" class="active-information">
+			Currently there are no active vendors.Please add new vendor.</div>
+		<!-- <div class="total-pages">Total no of pages {{currentPage+1}} / {{totalNoOfPages()}}</div> -->
+	</div>
+		
+	</div>
+</div>

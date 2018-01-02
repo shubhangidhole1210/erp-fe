@@ -1,0 +1,101 @@
+<div ng-controller="storeOutCtrl">
+
+	<div class="erp-security">
+		<div class="qualitycheck">
+			<div class="header">RAW MATERIAL STORE OUT</div>
+			<div class="qualityInspection scroll-security">
+				<form name="storeOutInformation" novalidate>
+					<div>
+					       
+						<div layout-gt-sm="row">
+							<md-input-container class="md-block" flex-gt-sm type="password">
+							<label style="color: black;">PRODUCT</label> <md-select 
+								ng-model="productionPlan" name="vendorId"
+								ng-disabled="isReadOnly" ng-init=getProductionPlanForStoreOut() name="product"
+								 ng-change="getProductRMAssociation()" required >
+							<md-option ng-repeat="productionPlan in productionPlans"
+								ng-value="productionPlan">
+							{{productionPlan.productId.partNumber}} </md-option>
+							</md-select> 
+							 <div ng-messages="storeOutInformation.product.$error">
+								<div ng-message="required">Please enter Description</div>
+							</div>
+							</md-input-container>
+						</div>
+						<div ng-show="isProductionPlanPresent"  class="ui-msg">There is no any production planning list ! Please update production plan for current date</div>
+						<!-- <div class="ui-msg" ng-show="isProduct">There is no any production planning list ! Please update production plan for current date</div> -->
+						<div layout-gt-sm="row">
+							<md-input-container class="md-block" flex-gt-sm>
+							<label class="input-filed-label">DESCRIPTION</label> <input
+								type="text" required name="description" ng-model="description" ng-minlength="4" ng-maxlength="255">
+							<div ng-messages="storeOutInformation.description.$error">
+								<div ng-message="required">Please enter Description</div>
+								<div ng-message="minlength">Description should be minimum 4 and maximum 255 character</div>
+								<div ng-message="maxlength">Description should be minimum 4 and maximum 255 character</div>
+							</div>
+							</md-input-container>
+						</div>
+						
+						
+						  <md-input-container class="md-block" flex-gt-sm>
+									<md-checkbox aria-label="Checkbox 1" ng-model="isSelectedItemStoreOut" ng-disabled="!productionPlan"> Select Required Items for store out </md-checkbox>
+									</md-input-container>
+									
+						<md-input-container class="md-block" flex-gt-sm>
+						<label class="input-filed-label">QUANTITY TO MANUFACTURE</label> <input
+							type="number" required name="quantity" 
+							ng-model="manuFactureQuantity"
+							ng-change="updateDispatchQuantity()" min="1">
+						<div ng-messages="storeOutInformation.quantity.$error">
+							<div ng-message="required">Please enter Quantity</div>
+							<div ng-message="min">Manufacture Quantity should be greater then 0 </div>
+						</div>
+						</md-input-container>
+						<h3>Raw Material List</h3>
+						<table class="form-table">
+							<tr class="form-table-row">
+								<th class="table-info">NO</th>
+								<th ng-show="isSelectedItemStoreOut" class="table-info">ISSELECTED</th>
+								<th class="table-info">RAW MATERIAL NAME</th>
+								<th class="table-info">INVENTORY QUANTITY</th>
+								<th class="table-info">QUANTITY REQUIRED</th>
+								<th>QUANTITY DISPATCH</th>
+							</tr>
+							<tr ng-repeat="rawMaterial in productRMList" class="form-table-row">
+							    <td class="table-info">{{$index+1}}</td>
+							      <td class="table-info" ng-show="isSelectedItemStoreOut"> <md-input-container class="md-block" flex-gt-sm>
+									<md-checkbox  aria-label="Checkbox 1" ng-model="isSelectedRawMaterial" ng-change="onIsSelectedChange(isSelectedRawMaterial,$index)">
+									</md-input-container></td>
+								<td class="table-info">{{rawMaterial.name}}</td>
+								<td class="table-info">{{rawMaterial.inventoryQuantity}}</td>
+								<td class="table-info">{{rawMaterial.quantityRequired}}</td>
+								<td>
+									<md-input-container class="md-block" flex-gt-sm>
+										<input type="number" name="dispatchQuantity{{$index}}"
+											ng-model="rawMaterial.quantityDispatched" max="{{rawMaterial.inventoryQuantity}}" disabled min="0" >
+										<div ng-show="storeOutInformation.dispatchQuantity{{$index}}.$error.max" class="error-msg">
+										  Material shortage in RM Inventory.
+										  Dispatch Quantity should not be greater than Inventory Quantity. 
+										  Please add Raw Materials to the Inventory.
+										</div>	
+									</md-input-container></td>
+						
+							</tr>
+							
+						</table>
+						<div class="active-information" ng-show="addProductRmAssociationMsg">{{message}}</div>
+						<div class="store-info-btn">
+							<md-dialog-actions layout="row"> <md-button
+								class="actionButton"
+								ng-click="submitInformation(storeOutInformation.$valid,$event)"
+								type="submit" ng-disabled="isReadOnly" style="">SAVE</md-button> <md-button
+								class="actionButton" ng-click="restInformation()" style="" type="button">CANCEL</md-button>
+							</md-dialog-actions>
+						</div>
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

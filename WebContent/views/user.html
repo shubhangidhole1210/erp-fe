@@ -1,0 +1,83 @@
+<div ng-controller="userCtrl">
+	<div class="erp-information" ng-init="populateUserList($event); flag=1">
+		<div class="tooltip">
+			<md-button class="md-raised md-primary add-new-btn"
+				ng-click="addNewUser($event);resetUserData()" type="reset">ADD
+			NEW USER</md-button>
+			<span class="tooltiptext">Add new User here</span>
+		</div>
+
+		<md-input-container class="md-block" flex-gt-sm type="password">
+		<input type="text" ng-model="searchText" name="password"
+			placeholder="Search by First Name" class="search-text"> </md-input-container>
+		<div class="">
+		<h1 class="table-header">USER LIST</h1>
+		
+			
+				
+				<div class="table-header-set">
+				<span style="padding-left: 2px">NO</span>
+				<span style="padding-left: 20px">FIRST NAME</span>
+				<span style="padding-left: 48px">LAST NAME</span>
+				<span style="padding-left: 80px">MOBILE</span>
+				<span style="padding-left: 85px">USER TYPE</span>
+				<span style="padding-left: 60px">ACTION</span>
+				</div>
+				<div class="scroll-rm-list"> 
+			<table>
+			<tr
+				ng-repeat="users in users| filter:{ firstName: searchText }  | startFrom:currentPage*pageSize | limitTo:pageSize ">
+				<td>{{(currentPage*pageSize) + ($index+1) }}</td>
+				<td>{{users.firstName}}</td>
+				<td>{{users.lastName}}</td>
+				<td>{{users.mobileNo}}</td>
+				<td>{{users.userTypeDTO.usertypeName}}</td>
+			<!-- 	<td>{{users.email}}</td> -->
+				<td>
+				  <div class="lock-size" layout="row" layout-align="center center" style="margin-left: -22%;">
+					<md-fab-speed-dial md-open="isOpen" md-direction="{{selectedDirection}}" ng-class="selectedMode" >
+        				<md-fab-trigger>
+					          <md-button class="md-fab" style="background-color: #106CC8;">
+					            <i class="material-icons">more_vert</i>
+					          </md-button>
+        				</md-fab-trigger>
+
+				        <md-fab-actions>
+				          <md-button class="md-fab md-raised md-mini actionButton" ng-click="viewUserInformation($event,$index)" style="padding-top: 7px;">
+				            <i class="material-icons">launch</i>
+				            <md-tooltip>View</md-tooltip>
+				          </md-button>
+				          <md-button class="md-fab md-raised md-mini actionButton" style="padding-top: 7px;" ng-click="editUserInformation($event,$index)" 
+								ng-init="flag=1"  >
+				            <i class="material-icons">mode_edit</i>
+				            <md-tooltip>Edit</md-tooltip>
+				          </md-button>
+				          <md-button class="md-fab md-raised md-mini actionButton"  style="padding-top: 7px;" ng-click="showConfirm($event,$index)">
+				            <i class="material-icons">delete</i>
+				            <md-tooltip >Delete</md-tooltip>
+				          </md-button>
+				        </md-fab-actions>
+      				</md-fab-speed-dial>	
+				</div>
+			</tr>
+		</table>
+		 <md-dialog-actions layout="row" style="" class="paginationBtn"> <md-button
+		class="md-raised"
+		type="button" ng-disabled="currentPage == 0" ng-click="gotoPrevPage()" ng-show="isPaginationBtnHide">Previous Page</md-button>
+		
+		
+		 <md-button
+		class="md-raised" ng-disabled="(currentPage + 1) == totalNoOfPages()" ng-click="gotoNextPage()" ng-show="isPaginationBtnHide">Next Page</md-button>
+	</md-dialog-actions>
+	<div class="total-pages">Total no of pages {{currentPage+1}} / {{totalNoOfPages()}}</div>
+		</div>
+	
+	</div>
+		<div class="active-information" ng-show="isUserUnavailable">
+			Currently there are no active users.Please add new user.</div>
+
+
+
+	</div>
+
+</div>

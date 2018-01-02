@@ -1,0 +1,72 @@
+<div ng-controller="clientCtrl">
+	<div class="erp-information">
+		<div>
+			<md-button class="md-raised md-primary"  class="add-new-btn" ng-click="addNewClient($event);"  ng-init="populateClientList();flag=0">ADD
+			NEW CLIENT</md-button>
+		</div>
+		 <md-input-container class="md-block" flex-gt-sm type="password" style="margin-left:2%">
+			<input type="text"  ng-model="searchText"  name="password" placeholder="Search by Company Name" class="search-text">
+			</md-input-container>
+			<div class="scroll-rm-list">
+		  <h1 class="table-header">CLIENT LIST</h1>
+		 <!--    <div style="float: left;" class="total-pages">Current page is {{currentPage+1}} of {{totalNoOfPages()}}</div> -->
+		<table>
+			<tr>
+				<th>NO</th>
+				<th>COMPANY NAME</th>
+				<th>EMAIL ID</th>
+				<th>CONTACT NUMBER</th>
+				<th>ACTION</th>
+			</tr>
+			
+			<tr ng-repeat=" clients in data |  filter:{ companyName: searchText } | startFrom:currentPage*pageSize | limitTo:pageSize " >
+				<td>{{(currentPage*pageSize) + ($index+1) }}</td>
+				<td>{{clients.companyName}}</td>
+				<td>{{clients.emailId}}</td>
+				<td>{{clients.contactNumber}}</td>
+				<td>
+				
+				   <div class="lock-size" layout="row" layout-align="center center">
+					<md-fab-speed-dial md-open="isOpen" md-direction="{{selectedDirection}}" ng-class="selectedMode" >
+        				<md-fab-trigger>
+					          <md-button class="md-fab" style="background-color: #106CC8;">
+					            <i class="material-icons">more_vert</i>
+					          </md-button>
+        				</md-fab-trigger>
+
+				        <md-fab-actions>
+				          <md-button class="md-fab md-raised md-mini actionButton" ng-click="viewClientInformation($event,$index)">
+				            <i class="material-icons">launch</i>
+				            <md-tooltip>View</md-tooltip>
+				          </md-button>
+				          <md-button class="md-fab md-raised md-mini actionButton"  ng-click="editClient($event,$index)" 
+								ng-init="flag=1"  >
+				            <i class="material-icons">mode_edit</i>
+				            <md-tooltip>Edit</md-tooltip>
+				          </md-button>
+				          <md-button class="md-fab md-raised md-mini actionButton" ng-click="showConfirm($event,$index)">
+				            <i class="material-icons">delete</i>
+				            <md-tooltip>Delete</md-tooltip>
+				          </md-button>
+				        </md-fab-actions>
+      				</md-fab-speed-dial>	
+				</div>
+				
+				</td>
+			</tr>
+		</table>
+		
+		  <md-dialog-actions layout="row" style="" class="paginationBtn" ng-show="isPaginationBtnHide"> <md-button
+		class="md-raised"
+		type="button" ng-disabled="currentPage == 0" ng-click="gotoPrevPage()">Previous Page</md-button> <md-button
+		class="md-raised" ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="gotoNextPage()">Next Page</md-button>
+	</md-dialog-actions>
+	<!-- <div class="total-pages">Total no of pages {{currentPage+1}} / {{totalNoOfPages()}}</div> -->
+	</div>
+		<div ng-show="isClientPresent" class="active-information">
+			 Currently there are no active clients.Please add new Clients.
+		</div>
+
+	</div>
+
+</div>

@@ -1,0 +1,51 @@
+<div ng-controller="administrationCtrl">
+<h1>its administration</h1>
+
+</div>
+
+
+
+<div ng-app="myApp" ng-controller="MyCtrl">
+   <div class="col-xs-12">
+      <label class="col-xs-6 control-label">Type:</label>
+      <div class="col-xs-6">
+         <select name="type" ng-model="payment.type" ng-dropdown required ng-change="payment_input = 0" >
+            <option ng-option value="Cash">Cash</option>
+            <option ng-option value="Check">Check</option>
+            <option ng-option value="Money Order">Money Order</option> 
+         </select>
+      </div>
+   </div>
+    {{ payment.cash }}
+   <div class="col-xs-12" id="cash" ng-if="payment.type == 'Cash'">
+      <div >
+         <label class="col-xs-6 control-label">Cash :</label>
+         <div class="col-xs-6"> 
+         </div>
+      </div>
+    </div>
+    
+    <div class="col-xs-12" id="check" ng-if="payment.type == 'Check'">
+      <div >
+         <label class="col-xs-6 control-label">check :</label>
+         <div class="col-xs-6"> 
+         </div>
+      </div>
+    </div>
+    
+    <div class="col-xs-12" id="money_order" ng-if="payment.type == 'Money Order'">
+      <div >
+         <label class="col-xs-6 control-label">money_order :</label>
+         <div class="col-xs-6"> 
+         </div>
+      </div>
+    </div>
+    
+    
+ <div class="col-xs-12" ng-show="payment.type == 'Check' || payment.type == 'Money Order' || payment.type == 'Cash'">
+      <div > 
+         <div class="col-xs-6"><input type="number" class="form-control" ng-model="payment_input"/>{{payment.type}}</div>
+    
+    </div>          
+</div>
+</div>

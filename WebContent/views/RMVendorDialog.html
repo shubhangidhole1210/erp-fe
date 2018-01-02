@@ -1,0 +1,266 @@
+<!-- 
+<md-dialog aria-label="Mango (Fruit)" style="width: 100%;height: 100%;margin-left: 15%;">
+<form name="rmVendorAssociation" novalidate>
+
+	<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>{{dialogueTitle}}</h2>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="cancel()"> <md-icon>&#10006;</md-icon>
+		</md-button>
+	</div>
+	</md-toolbar>
+
+	<md-dialog-content>
+	<div class="md-dialog-content">
+
+		<div layout-gt-sm="row">
+			<md-input-container style="width:100%"> <label>Raw
+				material*</label> <md-select ng-model="rmVendorAssociation.rawmaterialId.id"
+				name="rawMaterial" value="rawMaterial.id" ng-disabled="isReadOnly"
+				ng-init="getRawMaterials()" required ng-change="getPrice($index)"> <md-option
+				ng-repeat="rawMaterial in rawmaterials" ng-value="rawMaterial.id">
+			{{rawMaterial.partNumber}} </md-option> </md-select>
+			<div ng-messages="rmVendorAssociation.rawMaterial.$error">
+				<div ng-message="required">Please select Raw Material</div>
+			</div>
+			</md-input-container>
+			<md-input-container class="drop-down"> <label
+			style="color: black;">Vendor *</label> <md-select
+			ng-model="rmVendorAssociation.vendorId.id" name="vendor"
+			value="vendor.id" ng-disabled="isReadOnly" ng-init="getVendors()"
+			required> <md-option ng-repeat="vendorId in venodrs"
+			ng-value="vendorId.id"> {{vendorId.companyName}} </md-option> </md-select>
+		<div ng-messages="rmVendorAssociation.vendor.$error">
+			<div ng-message="required">Please select Vendor</div>
+		</div>
+		</md-input-container>
+		</div>
+		
+		<div class="ui-msg" ng-show="isRawMaterial">Please create Raw Material</div>
+
+		<div layout-gt-sm="row">
+
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">PRICE PER UNIT</label> <input
+				type="number" ng-model="rawmaterial.pricePerUnit"
+				value="{{pricePerUnit}}"  name="pricePerUnit"
+				 ng-maxlength="6" min="1" disabled >
+			</md-input-container>
+		</div>
+		
+		<div class="ui-msg" ng-show="isVendor">Please Create Vendor</div>
+		
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">Other one</label> <input min="0"
+				type="number" ng-model="taxStructureDTO.other1"
+			  name="otherTaxOne"
+				ng-disabled="isReadOnly" ng-value="{{taxStructureDTO.other1}}" >
+				<div ng-messages="rmVendorAssociation.otherTaxOne.$error">
+			      <div ng-message="required">Please enter other tax</div>
+			      <div ng-message="min">Invalid tax!! Tax should be 0% or more than 0%</div>
+		      	</div>
+			</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">Other Two</label> <input
+				type="number" ng-model="taxStructureDTO.other2"
+				value="rmVendorAssociation.taxStructureDTO.other2"  name="otherTaxTwo"
+				ng-disabled="isReadOnly" min="0" required>
+				<div ng-messages="rmVendorAssociation.otherTaxTwo.$error">
+			      <div ng-message="required">Please enter other tax</div>
+			       <div ng-message="min">Invalid tax!! Tax should be 0% or more than 0%</div>
+		      	</div>
+			</md-input-container>
+		</div>
+		
+		<div layout-gt-sm="row">
+		    <md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">Central GST(CGST)</label> <input
+				type="number" ng-model="taxStructureDTO.cgst"
+				value="rmVendorAssociation.taxStructureDTO.cgst"  name="centralGST"
+				ng-disabled="isReadOnly" required>
+				<div ng-messages="rmVendorAssociation.centralGST.$error">
+			      <div ng-message="required">Please enter Central GST tax</div>
+		      	</div>
+			</md-input-container>
+			 <md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">Integrated GST(IGST)</label> <input
+				type="number" ng-model="taxStructureDTO.igst"
+				value="rmVendorAssociation.taxStructureDTO.igst"  name="intigratedGST"
+				ng-disabled="isReadOnly" min="0" required>
+				<div ng-messages="rmVendorAssociation.intigratedGST.$error">
+			      <div ng-message="required">Please enter Integrated GST tax</div>
+			      <div ng-message="min">Invalid tax!! Tax should be 0% or more than 0%</div>
+		      	</div>
+			</md-input-container>
+		</div>
+		
+		<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">State GST(SGST)</label> <input
+				type="number" ng-model="taxStructureDTO.sgst"
+				value="rmVendorAssociation.taxStructureDTO.sgst"  name="stateGST"
+				ng-disabled="isReadOnly" min="0" required>
+				<div ng-messages="rmVendorAssociation.stateGST.$error">
+			      <div ng-message="required">Please enter State GST tax</div>
+			      <div ng-message="min">Invalid tax!! Tax should be 0% or more than 0%</div>
+		      	</div>
+			</md-input-container>
+		
+	</div>
+
+	</md-dialog-content>
+
+	<md-dialog-actions layout="row"> <md-button
+		class="md-raised"
+		ng-click="submitRMVendorAssociationInformation(rmVendorAssociation.$valid,$event)"
+		type="submit" ng-disabled="isReadOnly" >SAVE</md-button> <md-button
+		class="md-raised" ng-click="answer('not useful')">CANCEL</md-button>
+	</md-dialog-actions>
+
+</form>
+</md-dialog>
+
+ -->
+ 
+ 
+ 
+<md-dialog aria-label="Mango (Fruit)" style="width: 100%;height: 100%;margin-left: 15%;">
+<form name="rmVendorAssociation" novalidate>
+
+	<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>{{dialogueTitle}}</h2>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="cancel()"> <md-icon>&#10006;</md-icon>
+		</md-button>
+	</div>
+	</md-toolbar>
+
+	<md-dialog-content>
+	<div class="md-dialog-content">
+
+		<div layout-gt-sm="row">
+			<md-input-container class="drop-down"> 
+				<label>RM TYPE</label> 
+				<md-select 	ng-model="RMTypeId.id" name="rmType" ng-disabled="isReadOnly" ng-init="getRmTypeList()"
+							ng-change="getRawMaterialByRmType()" ng-required="true">
+						
+						<md-option ng-repeat="rMType in rmTypeList" ng-value="rMType.id"> {{rMType.rmTypeName}} </md-option> 
+				</md-select>
+				<div ng-messages="rawMaterialInformation.rmType.$error">
+					<div ng-message="required">Please Select RM Type</div>
+				</div>
+			</md-input-container>
+		</div>
+
+		<div layout-gt-sm="row">
+		
+			<md-input-container style="width:100%"> 
+				<label>Raw material*</label> 
+				<md-select 	ng-model="rmVendorAssociation.rawmaterialId.id" name="rawMaterial" value="rawMaterial.id" ng-disabled="isReadOnly" ng-init="getRawMaterialByRmType()"
+							ng-change="getPrice($index)" ng-required="true"> 
+							
+							<md-option ng-repeat="rawMaterial in rawmaterials" ng-value="rawMaterial.id"> {{rawMaterial.partNumber}} </md-option>
+							 
+				</md-select>
+				<div ng-messages="rmVendorAssociation.rawMaterial.$error">
+					<div ng-message="required">Please select Raw Material</div>
+				</div>
+			</md-input-container>
+			
+			<md-input-container class="drop-down"> 
+				<label style="color: black;">Vendor *</label> 
+				<md-select ng-model="rmVendorAssociation.vendorId.id" name="vendor" value="vendor.id" ng-disabled="isReadOnly" ng-init="getVendors()" required> 
+					
+					<md-option ng-repeat="vendorId in venodrs" ng-value="vendorId.id"> {{vendorId.companyName}} </md-option> 
+				
+				</md-select>
+				<div ng-messages="rmVendorAssociation.vendor.$error">
+					<div ng-message="required">Please select Vendor</div>
+				</div>
+		
+			</md-input-container>
+		</div>
+		
+		<div class="ui-msg" ng-show="isRawMaterial">Please create Raw Material</div>
+
+		<div layout-gt-sm="row">
+
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">PRICE PER UNIT</label> <input
+				type="number" ng-model="rawmaterial.pricePerUnit"
+				value="{{pricePerUnit}}"  name="pricePerUnit"
+				 disabled >
+			</md-input-container>
+		</div>
+		
+		<div class="ui-msg" ng-show="isVendor">Please Create Vendor</div>
+		
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">Other one</label> <input min="0"
+				type="number" ng-model="rmVendorAssociation.taxStructureDTO.other1"
+			  name="otherTaxOne"
+				ng-disabled="isReadOnly" onkeypress='return event.charCode >= 46 && event.charCode <= 57' >
+				<div ng-messages="rmVendorAssociation.otherTaxOne.$error">
+			      <div ng-message="required">Please enter other tax</div>
+			      <div ng-message="min">Invalid tax!! Tax should be 0% or more than 0%</div>
+		      	</div>
+			</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">Other Two</label> <input
+				type="number" ng-model="rmVendorAssociation.taxStructureDTO.other2"
+				  name="otherTaxTwo"
+				ng-disabled="isReadOnly" min="0" required onkeypress='return event.charCode >= 46 && event.charCode <= 57'>
+				<div ng-messages="rmVendorAssociation.otherTaxTwo.$error">
+			      <div ng-message="required">Please enter other tax</div>
+			       <div ng-message="min">Invalid tax!! Tax should be 0% or more than 0%</div>
+		      	</div>
+			</md-input-container>
+		</div>
+		
+		<div layout-gt-sm="row">
+		    <md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">Central GST(CGST)</label> <input
+				type="number" ng-model="rmVendorAssociation.taxStructureDTO.cgst"  name="centralGST"
+				ng-disabled="isReadOnly" required onkeypress='return event.charCode >= 46 && event.charCode <= 57'>
+				<div ng-messages="rmVendorAssociation.centralGST.$error">
+			      <div ng-message="required">Please enter Central GST tax</div>
+		      	</div>
+			</md-input-container>
+			 <md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">Integrated GST(IGST)</label> <input
+				type="number" ng-model="rmVendorAssociation.taxStructureDTO.igst" name="intigratedGST"
+				ng-disabled="isReadOnly" min="0" required onkeypress='return event.charCode >= 46 && event.charCode <= 57'>
+				<div ng-messages="rmVendorAssociation.intigratedGST.$error">
+			      <div ng-message="required">Please enter Integrated GST tax</div>
+			      <div ng-message="min">Invalid tax!! Tax should be 0% or more than 0%</div>
+		      	</div>
+			</md-input-container>
+		</div>
+		
+		<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">State GST(SGST)</label> <input
+				type="number" ng-model="rmVendorAssociation.taxStructureDTO.sgst" name="stateGST"
+				ng-disabled="isReadOnly" min="0" required onkeypress='return event.charCode >= 46 && event.charCode <= 57'>
+				<div ng-messages="rmVendorAssociation.stateGST.$error">
+			      <div ng-message="required">Please enter State GST tax</div>
+			      <div ng-message="min">Invalid tax!! Tax should be 0% or more than 0%</div>
+		      	</div>
+			</md-input-container>
+		
+	</div>
+
+	</md-dialog-content>
+
+	<md-dialog-actions layout="row"> <md-button
+		class="md-raised"
+		ng-click="submitRMVendorAssociationInformation(rmVendorAssociation.$valid,$event)"
+		type="submit" ng-disabled="rmVendorAssociation.$pristine" ng-show="isSaveButtonHide">SAVE</md-button> <md-button
+		class="md-raised" ng-click="answer('not useful')">CANCEL</md-button>
+	</md-dialog-actions>
+
+</form>
+</md-dialog>
+

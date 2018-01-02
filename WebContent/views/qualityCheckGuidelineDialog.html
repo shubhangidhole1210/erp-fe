@@ -1,0 +1,61 @@
+<md-dialog class="unit-dialogue">
+<form name="QcGuideLineInformation" novalidate>
+	<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>{{information}}</h2>
+		<span flex></span>
+		<md-button class="cancel" ng-click="cancel()"> <md-icon
+			>&#10006;</md-icon>
+		</md-button>
+	</div>
+	</md-toolbar>
+	<md-dialog-content>
+	<div class="md-dialog-content">
+		
+		<md-radio-group ng-model=selectedItem  ng-change="getProductOrRmList(selectedItem)">
+
+      <md-radio-button value="rawmaterial" class="md-primary">Raw Material</md-radio-button>
+      <md-radio-button value="product"  class="md-primary"> Product </md-radio-button>
+
+    </md-radio-group>
+		
+		
+		
+		<div layout-gt-sm="row">
+		  <md-input-container> <label>Select Item</label> <md-select
+			ng-model="id" name="userType" ng-disabled="isReadOnly"
+			  id="userType" required> 
+			<md-option ng-repeat="details in data" ng-value="details.id"  ng-disabled="!selectedItem">{{details.partNumber}} </md-option> </md-select>
+		</md-input-container>
+		</div>
+		<div>
+		 <md-input-container class="md-block">
+          <label>Guide Line</label>
+          <textarea ng-model="QualityCheckGuideline.guidelines" md-maxlength="2500" rows="5" name="guideLine" md-select-on-focus limit-to="2500" required ng-minlength="10" ng-maxlength="2500" >{{QualityCheckGuideline.guidelines}}</textarea>
+          <div ng-messages="QcGuideLineInformation.guideLine.$error">
+				<div ng-message="required">Please enter Guideline</div>
+				<div ng-message="minlength">Guideline should be minimum 10 character</div>
+				<div ng-message="maxlength">GuideLine should be maximum 2500 character</div>
+			</div>
+        </md-input-container>
+		
+		</div>
+		
+		</div>
+		</md-input-container>
+	</md-dialog-content>
+	<md-dialog-actions layout="row"> <md-button
+		class="md-raised"
+		ng-click="submitQcGuideLineInformation(QcGuideLineInformation.$valid,$event)"
+		type="submit" ng-disabled="isReadOnly" >SAVE</md-button> <md-button
+		class="md-raised" ng-click="answer('not useful')">CANCEL</md-button>
+	</md-dialog-actions>
+
+</form>
+</md-dialog>
+
+
+
+
+
+

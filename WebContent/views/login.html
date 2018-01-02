@@ -1,0 +1,50 @@
+<div ng-controller="loginCtrl" >
+<div class="login-container">
+	<div class="erp-info">
+		<img src="../image/erp_1.png" width="800" >
+		<!-- <img alt="" src="image/erp.jpg" width="750"> -->
+	</div>
+	<div class="loginClass">
+		<h1 class="login-name">Log In to your ERP Account</h1>
+	   	<form class="login-form" name="loginForm"  novalidate>
+			<fieldset>
+				<div>
+						<div class="loginForm">
+							<div>
+									<md-input-container class="md-block" flex-gt-sm >
+							            <label>User name</label>
+							            <input type="text" ng-model="userid" name="userName" id="userName" required ng-minlength="5" tabindex="1" ng-change="onUserIdChange()">
+							            <div ng-messages="loginForm.userName.$error">
+							             <div ng-message="required">Please enter user name</div>
+							             <div ng-message="minlength">User name should be minimum 5 character</div>
+							             <div ng-message="apiUserIdError">{{userIdMsg}}</div>
+							            </div>
+							          </md-input-container>
+							</div>
+							<div class="password-container">
+					             <md-input-container class="md-block" flex-gt-sm>
+						            <label>Password</label>
+						            <input type="password" ng-model="password" name="password" id="password" required ng-minlength="5" 
+						            	tabindex="2" ng-change="onPasswordChange()">
+						            <div ng-messages="loginForm.password.$error">
+						            <div ng-message="apiPasswordError">{{passwordMsg}}</div>
+							             <div ng-message="required">Please enter password</div>
+							             <div ng-message="minlength">password should be minimum 5 character</div>
+							        </div>
+							    </md-input-container>
+								<span class="forgot"><a href="" class="forgotLink" ng-click="isPasswordForget()">Forgot?</a></span>
+							</div>
+			
+							<div layout-gt-sm="row">
+								<div style="margin-left: 4%"><md-button class="md-raised md-primary" ng-click="submitLogin(loginForm.$valid)" 
+									type="submit" tabindex="3">LOGIN</md-button>
+								</div>
+							 	<!-- <md-button class="md-primary"  target="_blank">New User? Sign-Up</md-button> -->
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>

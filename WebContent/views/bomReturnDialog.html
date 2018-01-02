@@ -1,0 +1,50 @@
+<md-dialog class="statusInfo">
+<form name="bomReturnForm" novalidate>
+	<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>{{bomInformation}}</h2>
+		<span flex></span>
+	</div>
+	</md-toolbar>
+	<md-dialog-content>
+	<div class="md-dialog-content">
+		 <div layout-gt-sm="row">
+               <md-input-container class="drop-down">
+          <label>Product</label>
+          <md-select ng-model="product.product.id" name="product"  ng-disabled="productIdReadOnly" ng-init="getProducts()" ng-change="getBomInformation($index)" required>
+            <md-option ng-repeat="product in data.data" ng-value="product.id">
+               {{product.partNumber}}
+            </md-option>
+          </md-select>
+          <div ng-messages="bomReturnForm.product.$error">
+                 <div ng-message="required">Please Select Product</div>
+              </div>
+        </md-input-container>
+           </div>
+            <div layout-gt-sm="row">
+               <md-input-container class="drop-down">
+          <label>BOM</label>
+          <md-select ng-model="bom" name="bom"  ng-disabled="productIdReadOnly">
+            <md-option ng-repeat="bom in bomData" ng-value="bom" required>
+               {{bom.bomId}}
+            </md-option>
+          </md-select>
+          <div ng-messages="bomReturnForm.bom.$error">
+                 <div ng-message="required">Please Select Product</div>
+              </div>
+        </md-input-container>
+           </div>
+           <md-button class="md-raised md-primary add-new-btn"
+				ng-click="downloadPdf(bomReturnForm.$valid,$event)" style="background: rgba(63, 81, 181, 0.59);color: white;">DOWNLOAD PDF</md-button>
+          
+           
+	</div>
+	</md-dialog-content>
+
+	<md-dialog-actions layout="row"> 
+	    <md-button
+		class="md-raised" ng-click="answer('not useful')" style="background: rgba(63, 81, 181, 0.59);color: white;">CANCEL</md-button>
+	</md-dialog-actions>
+</form>
+</md-dialog>
+

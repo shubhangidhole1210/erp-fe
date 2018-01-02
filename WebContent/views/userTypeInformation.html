@@ -1,0 +1,57 @@
+<md-dialog style="width:100%;height:100%;margin-left:18%">
+<form name="userTypeInformation" novalidate>
+  <md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>{{information}}</h2>
+		<span flex></span>
+		<md-button class="cancel" ng-click="cancel()"> <md-icon
+			>&#10006;</md-icon>
+		</md-button>
+	</div>
+	</md-toolbar>
+	
+	<md-dialog-content>
+	<div class="md-dialog-content">
+
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">Name</label> <input type="text"
+				ng-model="userType.usertypeName" value="userType.usertypeName"
+				required name="usertypeName" ng-disabled="isReadOnly" ng-minlength="2" ng-maxlength="255" limit-to="255" ng-change="onchangeusertypename()"
+				>
+			<div ng-messages="userTypeInformation.usertypeName.$error">
+				<div ng-message="required">Please enter User Type</div>
+				<div ng-message="minlength">User Type should be minimum two character</div>
+				<div ng-message="maxlength">User Type should be minimum 255 character</div>
+				<div ng-message="userTypeNameError">{{userTypeNameApiErrorMsg}}</div>
+			</div>
+			</md-input-container>
+
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">Description</label> <input
+				type="text" ng-model="userType.description" required
+				name="description" value="userType.description" ng-minlength="4"
+				ng-maxlength="255" ng-disabled="isReadOnly" limit-to="255"
+				>
+			<div ng-messages="userTypeInformation.description.$error">
+				<div ng-message="required">UserType Description Required</div>
+				<div ng-message="minlength">UserType Description should be
+					minimum 4 character 255 character</div>
+				<div ng-message="maxlength">UserType Description should be
+					minimum 4 character 255 character</div>
+			</div>
+			</md-input-container>
+		</div>
+	</div>
+
+	</md-dialog-content>
+
+	<md-dialog-actions layout="row"> <md-button
+		class="md-raised"
+		ng-click="submitUserTypeInformation(userTypeInformation.$valid,$event)"
+		type="submit" ng-disabled="userTypeInformation.$pristine" ng-show="isSaveButtonHide" >SAVE</md-button> <md-button
+		class="md-raised" ng-click="answer('not useful')">CANCEL</md-button>
+	</md-dialog-actions>
+
+</form>
+</md-dialog>

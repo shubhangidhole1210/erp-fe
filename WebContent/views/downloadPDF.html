@@ -1,0 +1,48 @@
+<div ng-controller="downloadPDFController">
+<div class="erp-security" >
+<div class="qualitycheck" >
+   	<div class="header">GENERATE PDF HERE</div>
+ <div class="qualityInspection" >
+ <form name="bomReturnForm" novalidate>
+      <div layout-gt-sm="row">
+               <md-input-container class="drop-down">
+          <label>Product</label>
+          <md-select ng-model="product.id" name="product"  ng-disabled="productIdReadOnly" ng-init="getProductListByGenerateBom()" ng-change="getGenerateBom($index)" required>
+            <md-option ng-repeat="product in products" ng-value="product.id">
+               {{product.partNumber}}
+            </md-option>
+          </md-select>
+          <div ng-messages="bomReturnForm.product.$error">
+                 <div ng-message="message">Please select product</div>
+              </div>
+        </md-input-container>
+           </div>
+            <div layout-gt-sm="row">
+               <md-input-container class="drop-down">
+          <label>BOM</label>
+          <md-select ng-model="bom" name="bom"  ng-disabled="isBomDisabled" ng-click="bomValidationMsg(bom)">
+            <md-option ng-repeat="bom in bomData" ng-value="bom" >
+               {{bom.bomId}}
+            </md-option>
+          </md-select>
+          <div class="ui-msg" ng-show="ProductOrderMsg">Please Select Product First</div>
+          <div class="ui-msg" ng-show="generateBomMsg">Please generate BOM for {{product.partNumber}} product</div>
+          <!-- <div ng-messages="bomReturnForm.bom.$error">
+                 <div ng-message="message">please select bom</div>
+              </div> -->
+        </md-input-container>
+           </div>
+           <div >
+                <md-button class="md-raised md-primary add-new-btn" 
+				ng-click="submitPdfDownloadData(product.id,bom)">DOWNLOAD PDF</md-button>
+           </div>
+           <div  class="store-info-btn">
+								<md-button style="" class="md-raised downlodPdf-cancel-btn" ng-click="cancelBOMPage()">CANCEL</md-button> 
+							</md-dialog-actions> 
+						</div>			
+          
+ </form>
+ </div> 	
+</div>
+</div>
+</div>

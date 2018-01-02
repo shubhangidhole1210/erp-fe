@@ -1,0 +1,113 @@
+<md-dialog aria-label="Mango (Fruit)" class="dialogueInfo erp-dialog">
+<form name="rawMaterialInformation" novalidate>
+	<md-toolbar>
+	<div class="md-toolbar-tools">
+		<h2>{{information}}</h2>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="cancel()"> <md-icon>&#10006;</md-icon>
+		</md-button>
+	</div>
+	</md-toolbar>
+	<md-dialog-content>
+	<div class="md-dialog-content">
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">NAME</label> <input type="text"
+				ng-model="rawMaterial.rmName" value="rawMaterial.rmName" required
+				name="name" ng-disabled="isReadOnly" ng-minlength="2" ng-maxlength="255" limit-to="255">
+			<div ng-messages="rawMaterialInformation.name.$error">
+				<div ng-message="required">Please enter Name</div>
+				<div ng-message="minlength"> Raw Material Name should be minimum 2 character</div>
+				<div ng-message="maxlength">Raw Material Name should be minimum 255 character</div>
+			</div>
+			</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">DESCRIPTION</label> <input
+				type="text" ng-model="rawMaterial.description"
+				value="rawMaterial.description" required name="description"
+				ng-minlength="4" ng-maxlength="255" ng-disabled="isReadOnly" limit-to="255">
+			<div ng-messages="rawMaterialInformation.description.$error">
+				<div ng-message="required">Please enter Description</div>
+				<div ng-message="minlength">Raw material Description should be minimum 4
+					character and maximum 255 character</div>
+				<div ng-message="maxlength">Raw material Description should be minimum 4
+					character and maximum 255 character</div>
+			</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+			
+		</div>
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+			<label class="input-filed-label">PART NUMBER</label> <input
+				type="text" ng-model="rawMaterial.partNumber"
+				value="rawMaterial.partNumber" required name="partNumber"
+				ng-disabled="isReadOnly">
+			<div ng-messages="rawMaterialInformation.partNumber.$error">
+				<div ng-message="required">Please enter Raw Material part
+					number</div>
+			</div>
+			</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm type="password">
+			<label class="input-filed-label">PRICE PER UNIT</label> <input
+				type="number" ng-model="rawMaterial.pricePerUnit"
+				value="rawMaterial.pricePerUnit" required name="pricePerUnit"
+				ng-disabled="isReadOnly"   onkeypress='return event.charCode >= 46 && event.charCode <= 57'>
+			<div ng-messages="rawMaterialInformation.pricePerUnit.$error">
+				<div ng-message="required">Please enter Price</div>
+				<div ng-message="maxlength">You can enter maximum 6 digit</div>
+			</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+			
+		</div>
+		<div layout-gt-sm="row">
+			<md-input-container class="drop-down"> <label>UNIT
+				ID*</label> <md-select ng-model="rawMaterial.unitId.id" name="unitID"
+				 ng-disabled="isReadOnly" ng-init="getUnitList()"
+				ng-required="true" rrquired> <md-option
+				ng-repeat="unitId in unitList" ng-value="unitId.id">
+			{{unitId.name}} </md-option> </md-select>
+			<div ng-messages="rawMaterialInformation.unitID.$error">
+				<div ng-message="required">Please Select Unit</div>
+			</div>
+			</md-input-container>
+			<md-input-container class="drop-down"> <label>RM TYPE</label> <md-select ng-model="rawMaterial.rmTypeId.id" name="rmType"
+				 ng-disabled="isReadOnly" ng-init="getRmTypeList()"
+				ng-required="true" rrquired> <md-option
+				ng-repeat="rmTypeId in rmTypeList" ng-value="rmTypeId.id">
+			{{rmTypeId.rmTypeName}} </md-option> </md-select>
+			<div ng-messages="rawMaterialInformation.rmType.$error">
+				<div ng-message="required">Please Select RM Type</div>
+			</div>
+			</md-input-container>
+		</div>
+		<div layout-gt-sm="row">
+			
+		</div>
+		
+		<input type="file" id="file1" name="file" multiple
+            ng-files="getTheFiles($files)" ng-model="file"/>
+		
+	</div>
+	 
+	</md-dialog-content>
+	
+	
+	<md-dialog-actions layout="row"> <md-button
+		class="md-raised"
+		ng-click="saveRawMaterial(rawMaterial.rmName,rawMaterial.description,rawMaterial.partNumber,rawMaterial.pricePerUnit,rawMaterial.unitId,rawMaterial.rmTypeId)"
+		type="submit" ng-disabled="rawMaterialInformation.$pristine"  ng-show="isSaveButtonHide" ng-show="isSaveButtonHide">SAVE</md-button> <md-button
+		class="md-raised" ng-click="answer('not useful')">CANCEL</md-button>
+	</md-dialog-actions>
+
+</form>
+</md-dialog>
+
+
+
+
+
+

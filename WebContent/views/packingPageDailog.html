@@ -1,0 +1,71 @@
+<md-dialog class="dialogueInfo" >
+  <form name="packingPageinformation" novalidate>
+  
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{dialogueTitle}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon  class="close-icon">&#10006;</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content >
+      <div class="md-dialog-content">
+       
+        <md-input-container> <label>PRODUCT*</label> <md-select
+			ng-model="barcode.product.id" name="product" ng-disabled="isReadOnly"
+			ng-required="true" required ng-init="getProductList()" > 
+			<md-option ng-repeat="product in productList" ng-value="product.id">{{product.partNumber}} </md-option> </md-select>
+		 <div  ng-messages="packingPageinformation.product.$error">
+          <div ng-message="required">Please select Product</div>
+        </div>
+         <div ng-show="isUserTypeSelectionMsg">Please select User Type</div>
+		</md-input-container>
+       
+      <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label  class="input-filed-label">DESCRIPTION</label>
+            <input type="text" required name="description" ng-model="barcode.description" value="vendorUser.companyName" ng-minlength="2" ng-maxlength="255" limit-to="255" ng-disabled="isReadOnly" >
+             <div ng-messages="packingPageinformation.description.$error">
+            <div ng-message="required">Please enter Company Name</div>
+             <div ng-message="minlength">Company Name should be minimum 2 or Maximum 255 character</div>
+          </div>
+          </md-input-container>
+        </div>
+      
+         <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label class="input-filed-label">QUANTITY</label>
+            <input type="number"  ng-model="barcode.quantity" value="vendorUser.contactNumberMobile"  required name="quantity" ng-disabled="isReadOnly">
+              <div ng-messages="packingPageinformation.quantity.$error">
+                 <div ng-message="required">Please enter Mobile or Phone number</div>
+              </div>
+          </md-input-container>
+
+        </div>
+        	<md-radio-group ng-model="sendOption" ng-change="onSendOptionChanged()" class="md-primary">
+
+      <md-radio-button value="isBag" >BAG</md-radio-button>
+      <md-radio-button value="isBox">BOX</md-radio-button>
+      <md-radio-button value="isUnit">UNIT</md-radio-button>
+
+    </md-radio-group>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      
+      <md-button class="md-raised" ng-click="submitPackaginInformation(packingPageinformation.$valid,$event)"  ng-disabled="packingPageinformation.$pristine" ng-show="isSaveButtonHide" type="submit">SAVE</md-button>
+      <md-button class="md-raised" ng-click="hide()">CANCEL</md-button>
+    </md-dialog-actions>
+    
+  </form>
+</md-dialog>
+
+
+
+
+
+
